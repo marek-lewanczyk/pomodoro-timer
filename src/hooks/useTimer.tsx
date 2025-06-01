@@ -10,6 +10,7 @@ export function useTimer(config?: TimerConfig) {
     const [mode, setMode] = useState<TimerMode>("work");
     const [isRunning, setIsRunning] = useState<boolean>(false);
     const [timeLeft, setTimeLeft] = useState<number>(workDuration);
+    const [worksSessions, setWorkSessions] = useState<number>(0);
 
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -28,7 +29,7 @@ export function useTimer(config?: TimerConfig) {
         intervalRef.current = setInterval(() => {
             setTimeLeft(prev => {
                 if (prev === 1) {
-                    switchMode(mode === "work" ? "shortBreak" : "work");
+                    handleEndOfWorkSession();
                     return 0;
                 }
                 return prev - 1;
@@ -56,6 +57,21 @@ export function useTimer(config?: TimerConfig) {
         setTimeLeft(getDuration(newMode));
     }
 
+    const handleEndOfWorkSession = () => {
+        if (mode === "work") {
+            const nextCount = worksSessions + 1;
+            setWorkSessions(nextCount);
+
+            if (nextCount >= 4) {
+                switchMode("longBreak");
+                setWorkSessions(0);
+            } else {
+                switchMode("shortBreak");
+            }
+        } else {
+            switchMode("work");
+        }
+    }
     useEffect(() => {
         return () => {
             if (intervalRef.current) {
