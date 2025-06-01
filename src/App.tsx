@@ -1,7 +1,9 @@
+import Timer from "@/components/Timer/Timer.tsx";
+
 function App() {
   return (
     <>
-      <div>Hello World</div>
+        <Timer />
     </>
   )
 }
