@@ -4,6 +4,7 @@ export interface TimerConfig {
     workDuration?: number;
     shortBreakMinutes?: number;
     longBreakMinutes?: number;
+    onWorkSessionEnd?: () => void;
 }
 
 export interface TimerModeSelectorProps {

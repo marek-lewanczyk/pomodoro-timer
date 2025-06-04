@@ -3,9 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import type { TimerMode, TimerConfig } from "@/types/timer.ts";
 
 export function useTimer(config?: TimerConfig) {
-    const workDuration = (config?.workDuration ?? 25) * 60; // Default to 25 minutes in seconds
-    const shortBreakDuration = (config?.shortBreakMinutes ?? 5) * 60; // Default to 5 minutes in seconds
-    const longBreakDuration = (config?.longBreakMinutes ?? 15) * 60; // Default to 15 minutes in seconds
+    const workDuration = (config?.workDuration ?? 0.05) * 60; // Default to 25 minutes in seconds
+    const shortBreakDuration = (config?.shortBreakMinutes ?? 0.05) * 60; // Default to 5 minutes in seconds
+    const longBreakDuration = (config?.longBreakMinutes ?? 0.05) * 60; // Default to 15 minutes in seconds
 
     const [mode, setMode] = useState<TimerMode>("work");
     const [isRunning, setIsRunning] = useState<boolean>(false);
@@ -59,6 +59,8 @@ export function useTimer(config?: TimerConfig) {
 
     const handleEndOfWorkSession = () => {
         if (mode === "work") {
+            config?.onWorkSessionEnd?.();
+
             const nextCount = worksSessions + 1;
             setWorkSessions(nextCount);
 
