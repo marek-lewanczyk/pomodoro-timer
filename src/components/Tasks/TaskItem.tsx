@@ -32,8 +32,8 @@ export default function TaskItem({ task, isActive }: Props) {
   return (
     <li className="w-full flex flex-col bg-white">
       {/* Główna linia z checkboxem i tytułem */}
-      <div className="flex justify-between items-center gap-5">
-        <div className="flex items-center gap-3">
+      <div className="font-vt323 flex justify-between items-center gap-5">
+        <div className="w-full flex items-center gap-3">
           <input
             type="checkbox"
             checked={task.isCompleted}
@@ -41,12 +41,12 @@ export default function TaskItem({ task, isActive }: Props) {
             className="appearance-none w-6 h-6 border border-black bg-white checked:bg-black checked:border-black checked:text-white cursor-pointer shadow-[3px_3px_0px_black] transition duration-100"
           />
           {isEditing ? (
-            <input
-              value={editedTitle}
-              onChange={(e) => setEditedTitle(e.target.value)}
-              className="bg-gray-100 rounded px-2 py-1 text-sm"
-              autoFocus
-            />
+              <textarea
+                  value={editedTitle}
+                  onChange={(e) => setEditedTitle(e.target.value)}
+                  className="p-1 w-full resize-y font-vt323 text-sm bg-white text-black border border-black shadow-[3px_3px_0px_black] focus:outline-none focus:ring-2 focus:ring-black"
+                  autoFocus
+              />
           ) : (
             <span
               className={`flex-1 text-sm text-justify ${

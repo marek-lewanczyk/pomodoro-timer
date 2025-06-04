@@ -1,7 +1,7 @@
 import type {Task, TaskContextType} from "@/types/task.ts";
 
 import {createContext, useContext, useState} from "react";
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 
 const TaskContext = createContext<TaskContextType | undefined>(undefined);
 
@@ -49,9 +49,11 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
     const incrementPomodoroForActiveTask = () => {
         setTasks(prev =>
             prev.map(task =>
-                task.id === activeTaskId ? {...task, pomodoroCount: task.pomodoroCount + 1} : task
+                task.id === activeTaskId && !task.isCompleted
+                    ? { ...task, pomodoroCount: task.pomodoroCount + 1 }
+                    : task
             )
-        )
+        );
     }
 
     return (
