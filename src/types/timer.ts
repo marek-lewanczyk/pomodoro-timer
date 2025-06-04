@@ -8,7 +8,8 @@ export interface TimerConfig {
 }
 
 export interface TimerModeSelectorProps {
-    onSwitchMode: (mode: TimerMode) => void
+    mode: TimerMode;
+    onSwitchMode: (mode: TimerMode) => void;
 }
 
 export interface TimerDisplayProps {
@@ -17,8 +18,8 @@ export interface TimerDisplayProps {
 }
 
 export interface TimerControlsProps {
-    isRunning: boolean
-    onStart: () => void
-    onPause: () => void
-    onReset: () => void
+    isRunning: boolean;
+    onStart: () => void;
+    onPause: () => void;
+    onReset: () => void;
 }

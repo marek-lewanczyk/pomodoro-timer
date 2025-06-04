@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import { useTasks } from '@/context/TaskContext'
+import {useState} from 'react'
+import {useTasks} from '@/context/TaskContext'
+import {PlusIcon} from "@heroicons/react/16/solid";
 
 export default function TaskForm() {
     const [title, setTitle] = useState('')
@@ -14,19 +15,19 @@ export default function TaskForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="flex gap-2 mb-4">
+        <form onSubmit={handleSubmit} className="w-full flex gap-4">
             <input
                 type="text"
                 value={title}
                 onChange={e => setTitle(e.target.value)}
                 placeholder="New task"
-                className="flex-1 px-3 py-2 border rounded dark:bg-gray-800 dark:text-white"
+                className="w-full p-2 font-vt323 bg-white text-black border border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] focus:outline-none  focus:ring-white placeholder-white"
             />
             <button
                 type="submit"
-                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                className="p-2 font-pixel text-sm bg-white text-black border border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:bg-black hover:text-white"
             >
-                Add
+                <PlusIcon className="h-8 w-8" />
             </button>
         </form>
     )

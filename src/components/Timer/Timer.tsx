@@ -11,8 +11,8 @@ export default function Timer() {
         onWorkSessionEnd: incrementPomodoroForActiveTask
     });
     return (
-        <>
-            <TimerModeSelector onSwitchMode={switchMode} />
+        <div className="flex flex-col gap-10">
+            <TimerModeSelector mode={mode} onSwitchMode={switchMode} />
 
             <TimerDisplay timeLeft={timeLeft} mode={mode} />
 
@@ -22,6 +22,6 @@ export default function Timer() {
                 onPause={pause}
                 onReset={reset}
             />
-        </>
+        </div>
     )
 }

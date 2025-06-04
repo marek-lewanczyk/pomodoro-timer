@@ -3,15 +3,13 @@ import TaskList from "@/components/Tasks/TaskList.tsx";
 
 function App() {
   return (
-      <main className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8 max-w-5xl mx-auto">
-          <section>
+      <div className="min-h-screen min-w-screen flex flex-col justify-start gap-10">
+          <h1 className="font-pixel text-4xl text-center p-8 uppercase">Pomodoro Timer</h1>
+          <main className="grid grid-cols-1">
               <Timer />
-          </section>
-          <section>
-              <h2 className="text-2xl font-semibold mb-4">Your Tasks</h2>
               <TaskList />
-          </section>
-      </main>
+          </main>
+      </div>
   )
 }
 
