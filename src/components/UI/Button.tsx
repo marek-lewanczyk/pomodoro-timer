@@ -5,19 +5,21 @@ interface IconButtonProps {
   onClick?: () => void;
   children: ReactNode;
   to?: string;
+  type?: "button" | "submit" | "reset";
   className?: string;
   title?: string;
 }
 
-export default function IconButton({
+export default function Button({
   onClick,
   children,
   title,
+    to,
+    type,
   className,
-  to,
 }: IconButtonProps) {
   const baseClass =
-    "p-2 font-pixel text-sm border border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:bg-black hover:text-white transition";
+    "p-2 font-pixel text-sm border border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:bg-black hover:text-white transition active:scale-95";
 
   if (to) {
     return (
@@ -30,6 +32,7 @@ export default function IconButton({
   return (
     <button
       onClick={onClick}
+      type={type}
       title={title}
       className={`${baseClass} ${className}`}
     >

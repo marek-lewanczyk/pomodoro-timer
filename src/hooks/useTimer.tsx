@@ -1,13 +1,15 @@
 import {useEffect, useRef, useState} from "react";
 
-import type {TimerConfig, TimerMode} from "@/types/timer.ts";
+import type {TimerMode} from "@/types/timer.ts";
 import {useSettings} from "@/context/SettingsContext.tsx";
 import {useSound} from "@/hooks/useSound.tsx";
 
-export function useTimer(config?: TimerConfig) {
-    const workDuration = (config?.workDuration ?? 0.05) * 60; // Default to 25 minutes in seconds
-    const shortBreakDuration = (config?.shortBreakMinutes ?? 0.05) * 60; // Default to 5 minutes in seconds
-    const longBreakDuration = (config?.longBreakMinutes ?? 0.05) * 60; // Default to 15 minutes in seconds
+export function useTimer() {
+    const { settings } = useSettings();
+
+    const workDuration = (settings.workDuration) * 60; // Default to 25 minutes in seconds
+    const shortBreakDuration = (settings.shortBreakDuration) * 60; // Default to 5 minutes in seconds
+    const longBreakDuration = (settings.longBreakDuration) * 60; // Default to 15 minutes in seconds
 
     const [mode, setMode] = useState<TimerMode>("work");
     const [isRunning, setIsRunning] = useState<boolean>(false);
@@ -16,7 +18,6 @@ export function useTimer(config?: TimerConfig) {
 
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-    const { settings } = useSettings();
     const volume = settings.soundVolume / 100;
 
     const playWorkEnd = useSound("/sounds/work_end.mp3", volume);

@@ -3,7 +3,7 @@ import TextareaField from "@/components/UI/TextareaField";
 import type {Task} from "@/types/task";
 import {useTasks} from "@/context/TaskContext";
 import {ChevronDownIcon, ChevronUpIcon} from "@heroicons/react/16/solid";
-import IconButton from "@/components/UI/IconButton";
+import Button from "@/components/UI/Button.tsx";
 import Checkbox from "@/components/UI/CheckBox.tsx";
 import TaskPomodoroCount from "@/components/Tasks/TaskPomodoroCount.tsx";
 import TaskActions from "@/components/Tasks/TaskActions.tsx";
@@ -54,7 +54,7 @@ export default function TaskItem({ task, isActive }: Props) {
 
         <div className="flex items-center gap-4">
           <TaskPomodoroCount count={task.pomodoroCount} isActive={isActive} />
-          <IconButton
+          <Button
             onClick={() => setIsExpanded((prev) => !prev)}
             className="lg:hidden"
           >
@@ -63,7 +63,7 @@ export default function TaskItem({ task, isActive }: Props) {
             ) : (
               <ChevronUpIcon className="h-8 w-8" />
             )}
-          </IconButton>
+          </Button>
         </div>
       </div>
 

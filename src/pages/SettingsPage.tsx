@@ -1,9 +1,11 @@
-import {Link} from "react-router";
 import {useSettings} from "@/context/SettingsContext";
 import {useEffect} from "react";
 import {Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import FormikInputField from "@/components/UI/FormikInputField.tsx";
+import Button from "@/components/UI/Button.tsx";
+import {ArrowTurnLeftUpIcon} from "@heroicons/react/16/solid";
+import RangeField from "@/components/UI/RangeField/RangeField.tsx";
 
 const SettingsSchema = Yup.object().shape({
   workDuration: Yup.number().min(15).max(60).required(),
@@ -33,14 +35,11 @@ export default function SettingsPage() {
 
   return (
     <div className="p-4 font-vt323 max-w-xl mx-auto">
-      <div>
-        <Link
-          to="/"
-          className="text-blue-500 hover:underline mb-4 inline-block"
-        >
-          ⟵ Powrót do strony głównej
-        </Link>
-        <h1 className="text-3xl mb-4">Ustawienia</h1>
+      <div className="flex items-center">
+        <Button to="/">
+          <ArrowTurnLeftUpIcon className="w-8 h-8" />
+        </Button>
+        <h1 className="text-3xl m-4">Ustawienia</h1>
       </div>
 
       <Formik
@@ -85,18 +84,11 @@ export default function SettingsPage() {
               </label>
             </div>
 
-            <div>
-              <label className="block mb-1">
-                Głośność ({values.soundVolume}%)
-              </label>
-              <Field
-                type="range"
+            <RangeField
                 name="soundVolume"
-                min={0}
-                max={100}
-                className="w-full"
-              />
-            </div>
+                label="Głośność"
+                value={values.soundVolume}
+            />
 
             <div>
               <label className="block mb-1">Motyw</label>
@@ -111,12 +103,9 @@ export default function SettingsPage() {
               </Field>
             </div>
 
-            <button
-              type="submit"
-              className="px-4 py-2 font-pixel border border-black shadow-[3px_3px_0px_black] bg-black text-white hover:bg-white hover:text-black"
-            >
-              Zapisz
-            </button>
+            <Button type="submit">
+                <span className="px-2">Zapisz</span>
+            </Button>
           </Form>
         )}
       </Formik>

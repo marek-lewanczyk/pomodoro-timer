@@ -1,4 +1,4 @@
-import IconButton from "@/components/UI/IconButton.tsx";
+import Button from "@/components/UI/Button.tsx";
 import {ClipboardDocumentCheckIcon, PencilIcon, StarIcon, TrashIcon} from "@heroicons/react/16/solid";
 
 interface TaskActionsProps {
@@ -21,7 +21,7 @@ export default function TaskActions({
     return (
         <div className="flex flex-row justify-end gap-4 lg:flex-row">
             {!isCompleted && (
-                <IconButton
+                <Button
                     onClick={onSetActive}
                     className={
                         isActive
@@ -30,18 +30,18 @@ export default function TaskActions({
                     }
                 >
                     <StarIcon className="h-8 w-8" />
-                </IconButton>
+                </Button>
             )}
-            <IconButton onClick={onEdit}>
+            <Button onClick={onEdit}>
                 {isEditing ? (
                     <ClipboardDocumentCheckIcon className="h-8 w-8" />
                 ) : (
                     <PencilIcon className="h-8 w-8" />
                 )}
-            </IconButton>
-            <IconButton onClick={onDelete}>
+            </Button>
+            <Button onClick={onDelete}>
                 <TrashIcon className="h-8 w-8" />
-            </IconButton>
+            </Button>
         </div>
     );
 }

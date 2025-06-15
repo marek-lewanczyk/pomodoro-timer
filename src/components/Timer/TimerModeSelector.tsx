@@ -1,12 +1,12 @@
 import type {TimerModeSelectorProps} from "@/types/timer.ts";
 import {BriefcaseIcon, PauseIcon, SparklesIcon} from "@heroicons/react/16/solid";
-import IconButton from "@/components/UI/IconButton";
+import Button from "@/components/UI/Button.tsx";
 import clsx from "clsx";
 
 export default function TimerModeSelector({ mode, onSwitchMode }: TimerModeSelectorProps) {
     return (
         <div className="flex justify-center gap-4">
-            <IconButton
+            <Button
                 onClick={() => onSwitchMode("work")}
                 className={clsx(
                     mode === "work"
@@ -16,9 +16,9 @@ export default function TimerModeSelector({ mode, onSwitchMode }: TimerModeSelec
                 title="Tryb pracy"
             >
                 <BriefcaseIcon className="h-8 w-8" />
-            </IconButton>
+            </Button>
 
-            <IconButton
+            <Button
                 onClick={() => onSwitchMode("shortBreak")}
                 className={clsx(
                     mode === "shortBreak"
@@ -28,9 +28,9 @@ export default function TimerModeSelector({ mode, onSwitchMode }: TimerModeSelec
                 title="Krótka przerwa"
             >
                 <PauseIcon className="h-8 w-8" />
-            </IconButton>
+            </Button>
 
-            <IconButton
+            <Button
                 onClick={() => onSwitchMode("longBreak")}
                 className={clsx(
                     mode === "longBreak"
@@ -40,7 +40,7 @@ export default function TimerModeSelector({ mode, onSwitchMode }: TimerModeSelec
                 title="Długa przerwa"
             >
                 <SparklesIcon className="h-8 w-8" />
-            </IconButton>
+            </Button>
         </div>
     );
 }

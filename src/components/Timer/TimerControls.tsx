@@ -1,6 +1,6 @@
 import type {TimerControlsProps} from "@/types/timer.ts";
 import {Cog6ToothIcon, PlayPauseIcon, XMarkIcon} from "@heroicons/react/16/solid";
-import IconButton from "@/components/UI/IconButton.tsx";
+import Button from "@/components/UI/Button.tsx";
 
 export default function TimerControls({
                                           isRunning,
@@ -11,22 +11,22 @@ export default function TimerControls({
     return (
         <div className="flex justify-center gap-4">
             {!isRunning ? (
-                <IconButton onClick={onStart} title="Start">
+                <Button onClick={onStart} title="Start">
                     <PlayPauseIcon className="h-8 w-8" />
-                </IconButton>
+                </Button>
             ) : (
-                <IconButton onClick={onPause} title="Pauza">
+                <Button onClick={onPause} title="Pauza">
                     <PlayPauseIcon className="h-8 w-8" />
-                </IconButton>
+                </Button>
             )}
 
-            <IconButton onClick={onReset} title="Resetuj ustawienia">
+            <Button onClick={onReset} title="Resetuj ustawienia">
                 <XMarkIcon className="h-8 w-8" />
-            </IconButton>
+            </Button>
 
-            <IconButton to="/settings">
+            <Button to="/settings">
                 <Cog6ToothIcon className="w-8 h-8"/>
-            </IconButton>
+            </Button>
         </div>
     )
 }

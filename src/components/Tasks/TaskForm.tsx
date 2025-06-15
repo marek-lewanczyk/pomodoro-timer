@@ -1,6 +1,6 @@
 import {useTasks} from '@/context/TaskContext'
 import {PlusIcon} from "@heroicons/react/16/solid";
-import IconButton from "@/components/UI/IconButton.tsx";
+import Button from "@/components/UI/Button.tsx";
 import {Form, Formik} from 'formik'
 import FormikInputField from '@/components/UI/FormikInputField'
 
@@ -18,10 +18,10 @@ export default function TaskForm() {
             }}
         >
             <Form className="w-full flex gap-4">
-                <FormikInputField label={'Add new task'} name={'newTask'} fieldType={'text'} />
-                <IconButton type="submit" title="Dodaj">
+                <FormikInputField label="Add new task" name="title" fieldType="text" />
+                <Button type="submit" title="Dodaj">
                     <PlusIcon className="h-8 w-8" />
-                </IconButton>
+                </Button>
             </Form>
         </Formik>
     )
