@@ -1,13 +1,23 @@
 import type {Task, TaskContextType} from "@/types/task.ts";
-
-import {createContext, useContext, useState} from "react";
+import {createContext, useContext, useEffect, useState} from "react";
 import {v4 as uuidv4} from 'uuid';
+
+const LOCAL_STORAGE_KEY = "tasks";
 
 const TaskContext = createContext<TaskContextType | undefined>(undefined);
 
 export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
-    const [tasks, setTasks] = useState<Task[]>([]);
+    const [tasks, setTasks] = useState<Task[]>(() => {
+        const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
+        return stored ? JSON.parse(stored) : [];
+    });
+
     const [activeTaskId, setActiveTaskId] = useState<string | null>(null);
+
+    // Zapisuj do localStorage przy każdej zmianie
+    useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasks));
+    }, [tasks]);
 
     const addTask = (title: string) => {
         setTasks(prev => [
@@ -16,35 +26,37 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
                 id: uuidv4(),
                 title,
                 isCompleted: false,
-                pomodoroCount: 0
+                pomodoroCount: 0,
             }
-        ])
-    }
+        ]);
+    };
 
     const updateTask = (id: string, newTitle: string) => {
         setTasks(prev =>
             prev.map(task =>
                 task.id === id ? { ...task, title: newTitle } : task
             )
-        )
-    }
+        );
+    };
 
-     const deleteTask = (id: string) => {
+    const deleteTask = (id: string) => {
         setTasks(prev => prev.filter(task => task.id !== id));
         if (id === activeTaskId) setActiveTaskId(null);
-     }
+    };
 
     const toggleComplete = (id: string) => {
         setTasks(prev =>
             prev.map(task =>
-                task.id === id ? {...task, isCompleted: !task.isCompleted} : task
+                task.id === id
+                    ? { ...task, isCompleted: !task.isCompleted }
+                    : task
             )
-        )
-    }
+        );
+    };
 
     const setActiveTask = (id: string) => {
         setActiveTaskId(id);
-    }
+    };
 
     const incrementPomodoroForActiveTask = () => {
         setTasks(prev =>
@@ -54,7 +66,7 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
                     : task
             )
         );
-    }
+    };
 
     return (
         <TaskContext.Provider
@@ -66,18 +78,18 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
                 deleteTask,
                 toggleComplete,
                 setActiveTask,
-                incrementPomodoroForActiveTask
+                incrementPomodoroForActiveTask,
             }}
         >
             {children}
         </TaskContext.Provider>
-    )
-}
+    );
+};
 
 export const useTasks = () => {
-    const ctx = useContext(TaskContext)
+    const ctx = useContext(TaskContext);
     if (!ctx) {
-        throw new Error('useTasks must be used within a TasksProvider')
+        throw new Error('useTasks must be used within a TasksProvider');
     }
-    return ctx
-}
+    return ctx;
+};
