@@ -1,6 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 
-import type { TimerMode, TimerConfig } from "@/types/timer.ts";
+import type {TimerConfig, TimerMode} from "@/types/timer.ts";
+import {useSettings} from "@/context/SettingsContext.tsx";
+import {useSound} from "@/hooks/useSound.tsx";
 
 export function useTimer(config?: TimerConfig) {
     const workDuration = (config?.workDuration ?? 0.05) * 60; // Default to 25 minutes in seconds
@@ -13,6 +15,13 @@ export function useTimer(config?: TimerConfig) {
     const [worksSessions, setWorkSessions] = useState<number>(0);
 
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+    const { settings } = useSettings();
+    const volume = settings.soundVolume / 100;
+
+    const playWorkEnd = useSound("/sounds/work_end.mp3", volume);
+    const playShortBreakEnd = useSound("/sounds/shortbreak_end.mp3", volume);
+    const playLongBreakEnd = useSound("/sounds/longbreak_end.mp3", volume);
 
     const getDuration = (mode: TimerMode): number => {
         switch (mode) {
@@ -61,6 +70,8 @@ export function useTimer(config?: TimerConfig) {
         if (mode === "work") {
             config?.onWorkSessionEnd?.();
 
+            if (settings.soundEnabled) playWorkEnd();
+
             const nextCount = worksSessions + 1;
             setWorkSessions(nextCount);
 
@@ -70,10 +81,15 @@ export function useTimer(config?: TimerConfig) {
             } else {
                 switchMode("shortBreak");
             }
-        } else {
+        } else if (mode === "shortBreak") {
+            if (settings.soundEnabled) playShortBreakEnd();
+            switchMode("work");
+        } else if (mode === "longBreak") {
+            if (settings.soundEnabled) playLongBreakEnd();
             switchMode("work");
         }
     }
+
     useEffect(() => {
         return () => {
             if (intervalRef.current) {
