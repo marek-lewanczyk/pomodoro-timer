@@ -1,15 +1,12 @@
 import {useState} from "react";
+import TextareaField from "@/components/UI/TextareaField";
 import type {Task} from "@/types/task";
 import {useTasks} from "@/context/TaskContext";
-import {
-    AcademicCapIcon,
-    ChevronDownIcon,
-    ChevronUpIcon,
-    ClipboardDocumentCheckIcon,
-    PencilIcon,
-    StarIcon,
-    TrashIcon,
-} from "@heroicons/react/16/solid";
+import {ChevronDownIcon, ChevronUpIcon} from "@heroicons/react/16/solid";
+import IconButton from "@/components/UI/IconButton";
+import Checkbox from "@/components/UI/CheckBox.tsx";
+import TaskPomodoroCount from "@/components/Tasks/TaskPomodoroCount.tsx";
+import TaskActions from "@/components/Tasks/TaskActions.tsx";
 
 interface Props {
   task: Task;
@@ -34,18 +31,16 @@ export default function TaskItem({ task, isActive }: Props) {
       {/* Główna linia z checkboxem i tytułem */}
       <div className="font-vt323 flex justify-between items-center gap-5">
         <div className="w-full flex items-center gap-3">
-          <input
-            type="checkbox"
+          <Checkbox
             checked={task.isCompleted}
             onChange={() => toggleComplete(task.id)}
-            className="appearance-none w-6 h-6 border border-black bg-white checked:bg-black checked:border-black checked:text-white cursor-pointer shadow-[3px_3px_0px_black] transition duration-100"
           />
           {isEditing ? (
-            <textarea
+            <TextareaField
+              name="editedTitle"
               value={editedTitle}
               onChange={(e) => setEditedTitle(e.target.value)}
-              className="p-1 w-full resize-y font-vt323 text-sm bg-white text-black border border-black shadow-[3px_3px_0px_black] focus:outline-none focus:ring-2 focus:ring-black"
-              autoFocus
+              className="p-1 w-full resize-y font-vt323 text-sm bg-white text-black border border-black shadow-[3px_3px_0px_black] focus:outline-none focus:ring-2 focus:ring-black dark:border-white dark:bg-black dark:text-white dark:shadow-[3px_3px_0px_white]"
             />
           ) : (
             <span
@@ -59,64 +54,33 @@ export default function TaskItem({ task, isActive }: Props) {
         </div>
 
         <div className="flex items-center gap-4">
-          {/* Licznik */}
-          <span className="flex flex-row gap-2 items-center text-xs text-black">
-            {task.pomodoroCount}
-            <AcademicCapIcon className="inline h-4 w-4" />
-            {isActive && <StarIcon className="h-4 w-4 text-black lg:hidden" />}
-          </span>
-
-          {/* Przycisk rozwijania tylko na mobile */}
-          <button
+          <TaskPomodoroCount count={task.pomodoroCount} isActive={isActive} />
+          <IconButton
             onClick={() => setIsExpanded((prev) => !prev)}
-            className="p-2 font-pixel text-sm bg-white text-black border border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:bg-black hover:text-white lg:hidden"
+            className="lg:hidden"
           >
             {isExpanded ? (
-              <ChevronDownIcon className={"h-8 w-8"} />
+              <ChevronDownIcon className="h-8 w-8" />
             ) : (
               <ChevronUpIcon className="h-8 w-8" />
             )}
-          </button>
+          </IconButton>
         </div>
       </div>
 
-      {/* Licznik + ikony */}
       <div
         className={`mt-2 gap-4 flex-col lg:flex-row lg:items-center lg:justify-end ${
           isExpanded ? "flex flex-row items-center justify-end" : "hidden"
         } lg:flex`}
       >
-        {/* Ikony */}
-        <div className="flex flex-row justify-end gap-4 lg:flex-row">
-          {!task.isCompleted && (
-            <button
-              onClick={() => setActiveTask(task.id)}
-              className={`p-2 font-pixel text-sm border border-black shadow-[3px_3px_0px_black] ${
-                isActive
-                  ? "bg-black text-white"
-                  : "bg-white text-black hover:bg-black hover:text-white"
-              }`}
-            >
-              <StarIcon className="h-8 w-8" />
-            </button>
-          )}
-          <button
-            onClick={handleEdit}
-            className="p-2 font-pixel text-sm bg-white text-black border border-black shadow-[3px_3px_0px_black] hover:bg-black hover:text-white"
-          >
-            {isEditing ? (
-              <ClipboardDocumentCheckIcon className="h-8 w-8" />
-            ) : (
-              <PencilIcon className="h-8 w-8" />
-            )}
-          </button>
-          <button
-            onClick={() => deleteTask(task.id)}
-            className="p-2 font-pixel text-sm bg-white text-black border border-black shadow-[3px_3px_0px_black] hover:bg-black hover:text-white"
-          >
-            <TrashIcon className="h-8 w-8" />
-          </button>
-        </div>
+        <TaskActions
+          isCompleted={task.isCompleted}
+          isActive={isActive}
+          isEditing={isEditing}
+          onSetActive={() => setActiveTask(task.id)}
+          onEdit={handleEdit}
+          onDelete={() => deleteTask(task.id)}
+        />
       </div>
     </li>
   );
