@@ -41,12 +41,12 @@ export default function TaskItem({ task, isActive }: Props) {
             className="appearance-none w-6 h-6 border border-black bg-white checked:bg-black checked:border-black checked:text-white cursor-pointer shadow-[3px_3px_0px_black] transition duration-100"
           />
           {isEditing ? (
-              <textarea
-                  value={editedTitle}
-                  onChange={(e) => setEditedTitle(e.target.value)}
-                  className="p-1 w-full resize-y font-vt323 text-sm bg-white text-black border border-black shadow-[3px_3px_0px_black] focus:outline-none focus:ring-2 focus:ring-black"
-                  autoFocus
-              />
+            <textarea
+              value={editedTitle}
+              onChange={(e) => setEditedTitle(e.target.value)}
+              className="p-1 w-full resize-y font-vt323 text-sm bg-white text-black border border-black shadow-[3px_3px_0px_black] focus:outline-none focus:ring-2 focus:ring-black"
+              autoFocus
+            />
           ) : (
             <span
               className={`flex-1 text-sm text-justify ${
