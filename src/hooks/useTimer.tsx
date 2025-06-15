@@ -1,10 +1,10 @@
 import {useEffect, useRef, useState} from "react";
 
-import type {TimerMode} from "@/types/timer.ts";
+import type {TimerConfig, TimerMode} from "@/types/timer.ts";
 import {useSettings} from "@/context/SettingsContext.tsx";
 import {useSound} from "@/hooks/useSound.tsx";
 
-export function useTimer() {
+export function useTimer(config?: TimerConfig) {
     const { settings } = useSettings();
 
     const workDuration = (settings.workDuration) * 60; // Default to 25 minutes in seconds
