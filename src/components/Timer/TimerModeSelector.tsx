@@ -1,42 +1,46 @@
 import type {TimerModeSelectorProps} from "@/types/timer.ts";
 import {BriefcaseIcon, PauseIcon, SparklesIcon} from "@heroicons/react/16/solid";
+import IconButton from "@/components/UI/IconButton";
 import clsx from "clsx";
 
 export default function TimerModeSelector({ mode, onSwitchMode }: TimerModeSelectorProps) {
-    const baseClasses =
-        "p-2 font-pixel text-sm border border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition";
-
     return (
         <div className="flex justify-center gap-4">
-            <button
-                className={clsx(
-                    baseClasses,
-                    mode === "work" ? "bg-black text-white" : "bg-white text-black hover:bg-black hover:text-white"
-                )}
+            <IconButton
                 onClick={() => onSwitchMode("work")}
+                className={clsx(
+                    mode === "work"
+                        ? "bg-black text-white"
+                        : "bg-white text-black hover:bg-black hover:text-white"
+                )}
+                title="Tryb pracy"
             >
                 <BriefcaseIcon className="h-8 w-8" />
-            </button>
+            </IconButton>
 
-            <button
-                className={clsx(
-                    baseClasses,
-                    mode === "shortBreak" ? "bg-black text-white" : "bg-white text-black hover:bg-black hover:text-white"
-                )}
+            <IconButton
                 onClick={() => onSwitchMode("shortBreak")}
+                className={clsx(
+                    mode === "shortBreak"
+                        ? "bg-black text-white"
+                        : "bg-white text-black hover:bg-black hover:text-white"
+                )}
+                title="Krótka przerwa"
             >
                 <PauseIcon className="h-8 w-8" />
-            </button>
+            </IconButton>
 
-            <button
-                className={clsx(
-                    baseClasses,
-                    mode === "longBreak" ? "bg-black text-white" : "bg-white text-black hover:bg-black hover:text-white"
-                )}
+            <IconButton
                 onClick={() => onSwitchMode("longBreak")}
+                className={clsx(
+                    mode === "longBreak"
+                        ? "bg-black text-white"
+                        : "bg-white text-black hover:bg-black hover:text-white"
+                )}
+                title="Długa przerwa"
             >
                 <SparklesIcon className="h-8 w-8" />
-            </button>
+            </IconButton>
         </div>
     );
 }

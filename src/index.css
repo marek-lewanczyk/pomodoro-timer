@@ -7,3 +7,5 @@
     --font-pixel: "Press Start 2P", system-ui;
     --font-vt323: "VT323", monospace;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
