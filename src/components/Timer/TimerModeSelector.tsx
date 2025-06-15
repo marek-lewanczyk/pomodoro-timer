@@ -11,7 +11,7 @@ export default function TimerModeSelector({ mode, onSwitchMode }: TimerModeSelec
                 className={clsx(
                     mode === "work"
                         ? "bg-black text-white"
-                        : "bg-white text-black hover:bg-black hover:text-white"
+                        : "bg-white text-black"
                 )}
                 title="Tryb pracy"
             >

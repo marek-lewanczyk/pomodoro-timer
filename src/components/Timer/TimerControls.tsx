@@ -1,5 +1,5 @@
 import type {TimerControlsProps} from "@/types/timer.ts";
-import {PlayPauseIcon, XMarkIcon} from "@heroicons/react/16/solid";
+import {Cog6ToothIcon, PlayPauseIcon, XMarkIcon} from "@heroicons/react/16/solid";
 import IconButton from "@/components/UI/IconButton.tsx";
 
 export default function TimerControls({
@@ -22,6 +22,10 @@ export default function TimerControls({
 
             <IconButton onClick={onReset} title="Resetuj ustawienia">
                 <XMarkIcon className="h-8 w-8" />
+            </IconButton>
+
+            <IconButton to="/settings">
+                <Cog6ToothIcon className="w-8 h-8"/>
             </IconButton>
         </div>
     )

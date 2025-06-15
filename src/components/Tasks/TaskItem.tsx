@@ -28,7 +28,6 @@ export default function TaskItem({ task, isActive }: Props) {
 
   return (
     <li className="w-full flex flex-col bg-white">
-      {/* Główna linia z checkboxem i tytułem */}
       <div className="font-vt323 flex justify-between items-center gap-5">
         <div className="w-full flex items-center gap-3">
           <Checkbox
