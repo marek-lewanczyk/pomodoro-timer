@@ -17,8 +17,13 @@ export default function TaskForm() {
                 }
             }}
         >
-            <Form className="w-full flex gap-4">
-                <FormikInputField label="Add new task" name="title" fieldType="text" />
+            <Form className="w-full flex gap-4 items-center">
+                <div className="flex-grow">
+                    <FormikInputField
+                        name="title"
+                        fieldType="text"
+                    />
+                </div>
                 <Button type="submit" title="Dodaj">
                     <PlusIcon className="h-8 w-8" />
                 </Button>
