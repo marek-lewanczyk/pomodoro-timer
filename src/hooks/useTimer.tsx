@@ -3,13 +3,19 @@ import {useEffect, useRef, useState} from "react";
 import type {TimerConfig, TimerMode} from "@/types/timer.ts";
 import {useSettings} from "@/context/SettingsContext.tsx";
 import {useSound} from "@/hooks/useSound.tsx";
+import {useStatistics} from "@/context/StatisticsContext.tsx";
 
 export function useTimer(config?: TimerConfig) {
     const { settings } = useSettings();
+    const { incrementStats } = useStatistics();
 
-    const workDuration = (settings.workDuration) * 60; // Default to 25 minutes in seconds
-    const shortBreakDuration = (settings.shortBreakDuration) * 60; // Default to 5 minutes in seconds
-    const longBreakDuration = (settings.longBreakDuration) * 60; // Default to 15 minutes in seconds
+    // const workDuration = (settings.workDuration) * 60; // Default to 25 minutes in seconds
+    // const shortBreakDuration = (settings.shortBreakDuration) * 60; // Default to 5 minutes in seconds
+    // const longBreakDuration = (settings.longBreakDuration) * 60; // Default to 15 minutes in seconds
+
+    const workDuration = (0.05) * 60; // Default to 25 minutes in seconds
+    const shortBreakDuration = (0.05) * 60; // Default to 5 minutes in seconds
+    const longBreakDuration = (0.05) * 60; // Default to 15 minutes in seconds
 
     const [mode, setMode] = useState<TimerMode>("work");
     const [isRunning, setIsRunning] = useState<boolean>(false);
@@ -73,6 +79,8 @@ export function useTimer(config?: TimerConfig) {
 
             if (settings.soundEnabled) playWorkEnd();
 
+            incrementStats(workDuration / 60);
+
             const nextCount = worksSessions + 1;
             setWorkSessions(nextCount);
 
@@ -89,7 +97,7 @@ export function useTimer(config?: TimerConfig) {
             if (settings.soundEnabled) playLongBreakEnd();
             switchMode("work");
         }
-    }
+    };
 
     useEffect(() => {
         return () => {
