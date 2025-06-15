@@ -34,7 +34,7 @@ export default function SettingsPage() {
   }, [settings.theme]);
 
   return (
-    <div className="p-4 font-vt323 max-w-xl mx-auto">
+    <div className="flex flex-col p-4 font-vt323 max-w-xl mx-auto gap-4">
       <div className="flex items-center">
         <Button to="/">
           <ArrowTurnLeftUpIcon className="w-8 h-8" />
