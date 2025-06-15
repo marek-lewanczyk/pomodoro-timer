@@ -4,10 +4,13 @@ import type {TimerConfig, TimerMode} from "@/types/timer.ts";
 import {useSettings} from "@/context/SettingsContext.tsx";
 import {useSound} from "@/hooks/useSound.tsx";
 import {useStatistics} from "@/context/StatisticsContext.tsx";
+import {useNotification} from "@/context/NotificationContext.tsx";
+
 
 export function useTimer(config?: TimerConfig) {
     const { settings } = useSettings();
     const { incrementStats } = useStatistics();
+    const { showNotification } = useNotification();
 
     // const workDuration = (settings.workDuration) * 60; // Default to 25 minutes in seconds
     // const shortBreakDuration = (settings.shortBreakDuration) * 60; // Default to 5 minutes in seconds
@@ -78,6 +81,7 @@ export function useTimer(config?: TimerConfig) {
             config?.onWorkSessionEnd?.();
 
             if (settings.soundEnabled) playWorkEnd();
+            showNotification("🎉 Świetna robota! Czas na przerwę.");
 
             incrementStats(workDuration / 60);
 
@@ -92,9 +96,11 @@ export function useTimer(config?: TimerConfig) {
             }
         } else if (mode === "shortBreak") {
             if (settings.soundEnabled) playShortBreakEnd();
+            showNotification("🧠 Gotowy na kolejną sesję? Startujemy!");
             switchMode("work");
         } else if (mode === "longBreak") {
             if (settings.soundEnabled) playLongBreakEnd();
+            showNotification("💪 Ukończyłeś cały cykl! Brawo!");
             switchMode("work");
         }
     };

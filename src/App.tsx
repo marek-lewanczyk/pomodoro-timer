@@ -1,5 +1,6 @@
 import Timer from "@/components/Timer/Timer.tsx";
 import TaskList from "@/components/Tasks/TaskList.tsx";
+import Footer from "@/components/Footer.tsx";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Timer />
         <TaskList />
       </main>
+      <Footer />
     </div>
   );
 }
