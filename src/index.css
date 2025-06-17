@@ -6,6 +6,11 @@
 @theme {
     --font-pixel: "Press Start 2P", system-ui;
     --font-vt323: "VT323", monospace;
+    --color-*: initial;
+    --color-gray: #999;
+    --color-primary: #352f36;
+    --color-secondary: #faf9f6;
+    --shadow: 3px 3px 0 #352f36;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));

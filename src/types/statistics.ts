@@ -4,3 +4,8 @@ export interface PomodoroStats {
         minutesWorked: number;
     }
 }
+
+export interface TodayStatsCardProps {
+    pomodoros: number;
+    minutesWorked: number;
+}
