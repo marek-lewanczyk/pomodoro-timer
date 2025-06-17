@@ -5,6 +5,7 @@ import Button from "@/components/UI/Button.tsx";
 import {useState} from "react";
 import HelpModal from "@/components/HelpModal.tsx";
 import {ChartBarIcon, Cog6ToothIcon, InformationCircleIcon,} from "@heroicons/react/16/solid";
+import ErrorBoundary from "@/components/UI/ErrorBoundary.tsx";
 
 function App() {
   const [showHelp, setShowHelp] = useState(false);
@@ -28,7 +29,9 @@ function App() {
         </Button>
       </div>
       <main className="grid grid-cols-1">
-        <Timer />
+        <ErrorBoundary>
+          <Timer />
+        </ErrorBoundary>
         <TaskList />
       </main>
       {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}
