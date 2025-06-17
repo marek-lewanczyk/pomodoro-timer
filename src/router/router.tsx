@@ -1,24 +1,29 @@
 import {createBrowserRouter} from "react-router";
-import App from "@/App.tsx";
-import SettingsPage from "@/pages/SettingsPage.tsx";
-import StatisticsPage from "@/pages/StatisticsPage.tsx";
-import ErrorBoundary from "@/components/UI/ErrorBoundary.tsx"; // dodaj ten import
+import MainLayout from "@/layouts/MainLayout";
+import TimerPage from "@/pages/TimerPage";
+import SettingsPage from "@/pages/SettingsPage";
+import StatisticsPage from "@/pages/StatisticsPage";
+import ErrorBoundary from "@/components/UI/ErrorBoundary";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <App/>,
-        errorElement: <ErrorBoundary/>
-    },
-    {
-        path: "/settings",
-        element: <SettingsPage/>,
-        errorElement: <ErrorBoundary />, // opcjonalnie dla tej trasy
-    },
-    {
-        path: "/statistics",
-        element: <StatisticsPage/>,
-        errorElement: <ErrorBoundary />, // opcjonalnie
+        element: <MainLayout />,
+        errorElement: <ErrorBoundary />,
+        children: [
+            {
+                index: true,
+                element: <TimerPage />,
+            },
+            {
+                path: "settings",
+                element: <SettingsPage />,
+            },
+            {
+                path: "statistics",
+                element: <StatisticsPage />,
+            },
+        ],
     },
 ]);
 
