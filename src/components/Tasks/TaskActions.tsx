@@ -1,3 +1,4 @@
+import {memo} from "react";
 import Button from "@/components/UI/Button.tsx";
 import {ClipboardDocumentCheckIcon, PencilIcon, StarIcon, TrashIcon} from "@heroicons/react/16/solid";
 
@@ -10,7 +11,7 @@ interface TaskActionsProps {
     onDelete: () => void;
 }
 
-export default function TaskActions({
+function TaskActions({
                                         isCompleted,
                                         isActive,
                                         isEditing,
@@ -45,3 +46,8 @@ export default function TaskActions({
         </div>
     );
 }
+
+const MemoizedTaskActions = memo(TaskActions);
+MemoizedTaskActions.displayName = "TaskActions";
+
+export default MemoizedTaskActions;

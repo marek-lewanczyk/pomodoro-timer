@@ -1,3 +1,4 @@
+import {memo} from "react";
 import {AcademicCapIcon, StarIcon} from "@heroicons/react/16/solid";
 
 interface PomodoroCountProps {
@@ -5,12 +6,17 @@ interface PomodoroCountProps {
     isActive: boolean;
 }
 
-export default function TaskPomodoroCount({ count, isActive }: PomodoroCountProps) {
+function TaskPomodoroCount({ count, isActive }: PomodoroCountProps) {
     return (
         <span className="flex flex-row gap-2 items-center text-xs text-black">
-      {count}
+            {count}
             <AcademicCapIcon className="inline h-4 w-4" />
             {isActive && <StarIcon className="h-4 w-4 text-black lg:hidden" />}
-    </span>
+        </span>
     );
 }
+
+const MemoizedTaskPomodoroCount = memo(TaskPomodoroCount);
+MemoizedTaskPomodoroCount.displayName = "TaskPomodoroCount";
+
+export default MemoizedTaskPomodoroCount;

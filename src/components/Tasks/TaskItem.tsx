@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {memo, useState} from "react";
 import TextareaField from "@/components/UI/TextareaField";
 import type {Task} from "@/types/task";
 import {useTasks} from "@/context/TaskContext";
@@ -13,7 +13,7 @@ interface Props {
   isActive: boolean;
 }
 
-export default function TaskItem({ task, isActive }: Props) {
+function TaskItem({ task, isActive }: Props) {
   const { updateTask, deleteTask, toggleComplete, setActiveTask } = useTasks();
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(task.title);
@@ -84,3 +84,18 @@ export default function TaskItem({ task, isActive }: Props) {
     </li>
   );
 }
+
+function areEqual(prev: Props, next: Props) {
+  return (
+    prev.task.id === next.task.id &&
+    prev.task.title === next.task.title &&
+    prev.task.isCompleted === next.task.isCompleted &&
+    prev.task.pomodoroCount === next.task.pomodoroCount &&
+    prev.isActive === next.isActive
+  );
+}
+
+const MemoizedTaskItem = memo(TaskItem, areEqual);
+MemoizedTaskItem.displayName = "TaskItem";
+
+export default MemoizedTaskItem;
