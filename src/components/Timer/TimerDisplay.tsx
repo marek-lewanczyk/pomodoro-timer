@@ -1,6 +1,7 @@
 import type {TimerDisplayProps} from "@/types/timer.ts";
+import {memo} from "react";
 
-export default function TimerDisplay({ timeLeft, mode }: TimerDisplayProps) {
+function TimerDisplay({ timeLeft, mode }: TimerDisplayProps) {
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
 
@@ -21,3 +22,12 @@ export default function TimerDisplay({ timeLeft, mode }: TimerDisplayProps) {
     </div>
   );
 }
+
+function areEqual(prev: TimerDisplayProps, next: TimerDisplayProps) {
+  return prev.timeLeft === next.timeLeft && prev.mode === next.mode;
+}
+
+const MemoizedTimerDisplay = memo(TimerDisplay, areEqual);
+MemoizedTimerDisplay.displayName = "TimerDisplay";
+
+export default MemoizedTimerDisplay;

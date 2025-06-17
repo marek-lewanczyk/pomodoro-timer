@@ -1,13 +1,14 @@
 import type {TimerControlsProps} from "@/types/timer.ts";
 import {PlayPauseIcon, XMarkIcon} from "@heroicons/react/16/solid";
 import Button from "@/components/UI/Button.tsx";
+import {memo} from "react";
 
-export default function TimerControls({
-                                          isRunning,
-                                          onStart,
-                                          onPause,
-                                          onReset,
-                                      }: TimerControlsProps) {
+function TimerControls({
+                           isRunning,
+                           onStart,
+                           onPause,
+                           onReset,
+                       }: TimerControlsProps) {
     return (
         <div className="flex justify-center gap-4">
             {!isRunning ? (
@@ -24,5 +25,10 @@ export default function TimerControls({
                 <XMarkIcon className="h-8 w-8" />
             </Button>
         </div>
-    )
+    );
 }
+
+const MemoizedTimerControls = memo(TimerControls);
+MemoizedTimerControls.displayName = "TimerControls";
+
+export default MemoizedTimerControls;

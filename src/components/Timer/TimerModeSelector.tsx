@@ -2,8 +2,9 @@ import type {TimerModeSelectorProps} from "@/types/timer.ts";
 import {BriefcaseIcon, PauseIcon, SparklesIcon} from "@heroicons/react/16/solid";
 import Button from "@/components/UI/Button.tsx";
 import clsx from "clsx";
+import {memo} from "react";
 
-export default function TimerModeSelector({ mode, onSwitchMode }: TimerModeSelectorProps) {
+function TimerModeSelector({ mode, onSwitchMode }: TimerModeSelectorProps) {
     return (
         <div className="flex justify-center gap-4">
             <Button
@@ -44,3 +45,8 @@ export default function TimerModeSelector({ mode, onSwitchMode }: TimerModeSelec
         </div>
     );
 }
+
+const MemoizedTimerModeSelector = memo(TimerModeSelector);
+MemoizedTimerModeSelector.displayName = "TimerModeSelector";
+
+export default MemoizedTimerModeSelector;
