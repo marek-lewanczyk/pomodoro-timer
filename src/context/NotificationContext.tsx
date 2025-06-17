@@ -27,7 +27,7 @@ export const NotificationProvider = ({ children }: { children: React.ReactNode }
                     <div className="fixed top-6 right-6 bg-black text-white px-6 py-3 border-2 border-white shadow-[3px_3px_0_white] font-vt323 text-lg z-50">
                         {message}
                     </div>,
-                    document.getElementById("notification-root")!
+                    document.getElementById("modal-root")!
                 )
             }
         </NotificationContext.Provider>
