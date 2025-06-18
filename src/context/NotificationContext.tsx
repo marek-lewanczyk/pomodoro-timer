@@ -24,7 +24,7 @@ export const NotificationProvider = ({ children }: { children: React.ReactNode }
             {children}
             {message &&
                 createPortal(
-                    <div className="fixed top-6 right-6 bg-black text-white px-6 py-3 border-2 border-white shadow-[3px_3px_0_white] font-vt323 text-lg z-50">
+                    <div className="fixed top-6 right-6 px-6 py-3 border border-primary bg-secondary text-primary shadow font-vt323 text-lg z-50">
                         {message}
                     </div>,
                     document.getElementById("modal-root")!

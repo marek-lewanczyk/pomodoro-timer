@@ -11,12 +11,12 @@ function TimerDisplay({ timeLeft, mode }: TimerDisplayProps) {
     <div
       className={`flex flex-col items-center justify-center`}
     >
-      <h2 className="font-vt323 text-3xl uppercase mb-1 text-primary">
+      <h2 className="font-vt323 text-3xl uppercase mb-1">
         {mode === "work" && "Focus Time"}
         {mode === "shortBreak" && "Short Break"}
         {mode === "longBreak" && "Long Break"}
       </h2>
-      <div className="flex justify-center items-center font-pixel text-4xl tracking-widest text-primary">
+      <div className="flex justify-center items-center font-pixel text-4xl tracking-widest">
         {padded(minutes)} : {padded(seconds)}
       </div>
     </div>

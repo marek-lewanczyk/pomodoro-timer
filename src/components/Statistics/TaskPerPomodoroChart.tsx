@@ -1,15 +1,16 @@
 import {Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 
 import {useTasks} from "@/context/TaskContext";
-import {chartTheme} from "@/styles/chartTheme.ts";
+import {getChartTheme} from "@/styles/chartTheme.ts";
 import {getTaskChartData} from "@/helpers/taskData.ts";
 
 export default function TaskPerPomodoroChart() {
     const { tasks } = useTasks();
     const data = getTaskChartData(tasks);
+    const chartTheme = getChartTheme();
 
     return (
-        <div className="p-4 border border-primary shadow font-vt323 text-sm">
+        <div className="p-4 border border-primary shadow font-vt323 text-sm dark:border-secondary dark:shadow-dark ">
             <h3 className="text-xl mb-4 text-center">Pomodoro per Task</h3>
             <ResponsiveContainer width="100%" height={400}>
                 <BarChart data={data}>

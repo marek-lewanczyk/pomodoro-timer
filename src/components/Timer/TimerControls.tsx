@@ -16,12 +16,12 @@ function TimerControls({
                     <PlayPauseIcon className="h-8 w-8" />
                 </Button>
             ) : (
-                <Button onClick={onPause} title="Pauza">
+                <Button onClick={onPause} title="Pause">
                     <PlayPauseIcon className="h-8 w-8" />
                 </Button>
             )}
 
-            <Button onClick={onReset} title="Resetuj ustawienia">
+            <Button onClick={onReset} title="Reset">
                 <XMarkIcon className="h-8 w-8" />
             </Button>
         </div>

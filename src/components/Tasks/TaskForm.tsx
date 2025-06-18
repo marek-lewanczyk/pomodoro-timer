@@ -19,13 +19,13 @@ export default function TaskForm() {
             }}
         >
             <Form className="w-full flex gap-4 items-center">
-                <div className="flex-grow bg-secondary">
+                <div className="flex-grow bg-secondary dark:bg-primary">
                     <FormikInputField
                         name="title"
                         fieldType="text"
                     />
                 </div>
-                <Button type="submit" title="Dodaj">
+                <Button type="submit" title="Add">
                     <PlusIcon className="h-8 w-8" />
                 </Button>
             </Form>

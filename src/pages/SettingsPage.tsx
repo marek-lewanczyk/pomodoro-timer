@@ -4,7 +4,7 @@ import {Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import FormikInputField from "@/components/UI/FormikInputField.tsx";
 import Button from "@/components/UI/Button.tsx";
-import RangeField from "@/components/UI/RangeField/RangeField.tsx";
+import RangeField from "@/components/UI/RangeField.tsx";
 
 const SettingsSchema = Yup.object().shape({
   workDuration: Yup.number().min(15).max(60).required(),
@@ -71,7 +71,7 @@ export default function SettingsPage() {
               <Field
                 type="checkbox"
                 name="soundEnabled"
-                className="appearance-none w-6 h-6 border border-primary bg-white checked:bg-primary checked:border-primary checked:text-secondary cursor-pointer shadow transition duration-100"
+                className="appearance-none w-6 h-6 border border-primary bg-secondary checked:bg-primary checked:border-primary checked:text-secondary cursor-pointer shadow transition duration-100 dark:border-secondary dark:bg-primary dark:checked:bg-secondary dark:checked:border-secondary dark:checked:text-secondary dark:shadow-secondary"
               />
               <label htmlFor="soundEnabled">Turning sound on/off</label>
             </div>

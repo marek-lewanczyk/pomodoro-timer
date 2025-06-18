@@ -17,6 +17,7 @@
     --color-primary: var(--color-primary);
     --color-secondary: var(--color-secondary);
     --shadow: 3px 3px 0 #352f36;
+    --shadow-dark: 3px 3px 0 #faf9f6;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));

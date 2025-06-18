@@ -14,7 +14,6 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
 
     const [activeTaskId, setActiveTaskId] = useState<string | null>(null);
 
-    // Zapisuj do localStorage przy każdej zmianie
     useEffect(() => {
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasks));
     }, [tasks]);

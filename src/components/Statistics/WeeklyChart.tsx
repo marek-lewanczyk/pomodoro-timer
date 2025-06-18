@@ -1,13 +1,14 @@
 import {Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 
 import {useStatistics} from "@/context/StatisticsContext.tsx";
-import {chartTheme} from "@/styles/chartTheme.ts";
+import {getChartTheme} from "@/styles/chartTheme.ts";
 import {getPast7Days} from "@/helpers/taskDate.ts";
 
 
 export default function WeeklyChart() {
     const { stats } = useStatistics();
     const past7Days = getPast7Days();
+    const chartTheme = getChartTheme();
 
     const data = past7Days.map(date => ({
         date: date.slice(5), // MM-DD
@@ -16,7 +17,7 @@ export default function WeeklyChart() {
     }));
 
     return (
-        <div className="p-4 border border-primary shadow font-vt323 text-sm">
+        <div className="p-4 border border-primary shadow font-vt323 text-sm dark:border-secondary dark:shadow-dark">
             <h3 className="text-xl mb-4 text-center">Last 7 days</h3>
             <ResponsiveContainer width="100%" height={400}>
                 <BarChart data={data}>

@@ -7,12 +7,12 @@ export default function TaskList() {
 
     return (
         <div className="w-full mx-auto p-8 flex flex-col gap-4">
-            <h2 className="font-vt323 text-2xl text-center text-black">Your Tasks</h2>
+            <h2 className="font-vt323 text-2xl text-center">Your Tasks</h2>
 
             <TaskForm />
 
             {tasks.length === 0 ? (
-                <p className="font-vt323 text-center text-black">
+                <p className="font-vt323 text-center">
                     No tasks yet. Add one above!
                 </p>
             ) : (

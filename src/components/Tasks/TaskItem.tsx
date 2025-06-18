@@ -23,7 +23,7 @@ function TaskItem({ task, isActive }: TaskItemProps) {
   };
 
   return (
-    <li className="w-full flex flex-col bg-secondary">
+    <li className="w-full flex flex-col bg-secondary dark:bg-primary">
       <div className="font-vt323 flex justify-between items-center gap-5">
         <div className="w-full flex items-center gap-3">
           <Checkbox
@@ -35,12 +35,12 @@ function TaskItem({ task, isActive }: TaskItemProps) {
               name="editedTitle"
               value={editedTitle}
               onChange={(e) => setEditedTitle(e.target.value)}
-              className="p-1 w-auto font-vt323 text-sm bg-secondary text-primary border border-primary shadow focus:outline-none"
+              className="p-1 w-auto font-vt323 text-sm bg-secondary border border-primary shadow focus:outline-none dark:bg-primary dark:border-secondary dark:shadow-secondary"
             />
           ) : (
             <span
               className={`flex-1 text-sm text-justify ${
-                task.isCompleted ? "line-through text-gray-400" : ""
+                task.isCompleted ? "line-through" : ""
               }`}
             >
               {task.title}

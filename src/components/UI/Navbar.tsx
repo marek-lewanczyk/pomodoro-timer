@@ -12,19 +12,31 @@ export default function Navbar() {
     return (
         <nav className="flex justify-center gap-4 py-4">
             <Button to="/" title="Timer" isActive={path === "/"}>
-                <ClockIcon className="h-8 w-8" />
+                <ClockIcon
+                    className={`h-8 w-8 ${
+                        path === "/" ? "text-secondary dark:text-primary" : "text-primary dark:text-secondary"
+                    }`}
+                />
             </Button>
 
             <Button to="/statistics" title="Stats" isActive={path === "/statistics"}>
-                <ChartBarIcon className="h-8 w-8" />
+                <ChartBarIcon
+                    className={`h-8 w-8 ${
+                        path === "/statistics" ? "text-secondary dark:text-primary" : "text-primary dark:text-secondary"
+                    }`}
+                />
             </Button>
 
             <Button to="/settings" title="Settings" isActive={path === "/settings"}>
-                <Cog6ToothIcon className="w-8 h-8" />
+                <Cog6ToothIcon
+                    className={`h-8 w-8 ${
+                        path === "/settings" ? "text-secondary dark:text-primary" : "text-primary dark:text-secondary"
+                    }`}
+                />
             </Button>
 
             <Button onClick={() => setShowHelp(true)} title="Help">
-                <InformationCircleIcon className="h-8 w-8" />
+                <InformationCircleIcon className="h-8 w-8 text-inherit" />
             </Button>
 
             {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}

@@ -12,16 +12,18 @@ export default function Button({
   isActive,
 }: IconButtonProps) {
   const baseClass =
-    "inline-flex items-center justify-center h-12 w-auto p-2 font-pixel text-sm border border-primary shadow hover:bg-primary hover:text-secondary transition active:scale-95";
+    "inline-flex items-center justify-center h-12 w-auto p-2 font-pixel text-sm border border-primary shadow hover:bg-primary hover:text-secondary transition active:scale-95 dark:border-secondary dark:text-secondary dark:bg-primary dark:hover:bg-secondary dark:hover:text-primary dark:shadow-dark";
 
   if (to) {
     return (
         <NavLink
             to={to}
             title={title}
-            className={({ isActive }) =>
+            className={
                 `btn-link ${baseClass} ${className} ${
-                    isActive ? "bg-primary text-secondary" : "bg-secondary text-primary"
+                    isActive
+                        ? "bg-primary text-secondary dark:bg-secondary"
+                        : "bg-secondary text-primary dark:bg-primary"
                 }`
             }
         >

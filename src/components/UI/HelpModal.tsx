@@ -13,11 +13,11 @@ export default function HelpModal({ onClose }: HelpModalProps) {
 
     return createPortal(
         <div
-            className="fixed inset-0 flex justify-center items-center z-50 text-primary"
+            className="fixed inset-0 flex justify-center items-center z-50 text-primary dark:text-secondary"
             onClick={handleBackdropClick}
         >
             <div
-                className="bg-secondary border border-primary shadow p-6 max-w-md w-full font-vt323 text-base relative"
+                className="bg-secondary border border-primary shadow p-6 max-w-md w-full font-vt323 relative dark:bg-primary dark:border-secondary dark:shadow-dark"
                 onClick={(e) => e.stopPropagation()}
             >
                 <button

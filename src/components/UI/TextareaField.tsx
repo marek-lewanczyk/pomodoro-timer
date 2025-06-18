@@ -20,7 +20,7 @@ export default function TextareaField({
                 onChange={onChange}
                 className={
                     className ||
-                    "p-1 w-full resize-y font-vt323 text-sm bg-secondary text-primary border border-secondary shadow focus:outline-none focus:ring-2 focus:ring-primary"
+                    "p-1 w-full resize-y font-vt323 text-sm bg-secondary border border-secondary shadow focus:outline-none focus:ring-2 focus:ring-primary"
                 }
                 placeholder={placeholder}
             />

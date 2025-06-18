@@ -12,7 +12,7 @@ export function LoadingScreen() {
                         initial="hidden"
                         animate="visible"
                         variants={squareVariants}
-                        className="w-6 h-6 bg-primary"
+                        className="w-6 h-6 bg-primary dark:bg-secondary"
                         style={{ imageRendering: "pixelated" }}
                     />
                 ))}
