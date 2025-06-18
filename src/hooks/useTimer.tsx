@@ -83,7 +83,7 @@ export function useTimer(config?: TimerConfig) {
       config?.onWorkSessionEnd?.();
 
       if (settings.soundEnabled) playWorkEnd();
-      showNotification('🎉 Świetna robota! Czas na przerwę.');
+      showNotification('🎉 Great job! Time for a break.');
 
       incrementStats(workDuration / 60);
 
@@ -98,11 +98,11 @@ export function useTimer(config?: TimerConfig) {
       }
     } else if (mode === 'shortBreak') {
       if (settings.soundEnabled) playShortBreakEnd();
-      showNotification('🧠 Gotowy na kolejną sesję? Startujemy!');
+      showNotification('🧠 Ready for the next session? Let’s get started!');
       switchMode('work');
     } else if (mode === 'longBreak') {
       if (settings.soundEnabled) playLongBreakEnd();
-      showNotification('💪 Ukończyłeś cały cykl! Brawo!');
+      showNotification('💪 You’ve completed the entire cycle! Well done!');
       switchMode('work');
     }
   };
