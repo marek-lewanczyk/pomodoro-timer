@@ -2,7 +2,6 @@ import type { Preview } from '@storybook/react-vite';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import '../src/index.css';
 
-// 1. Inicjalizacja react-query clienta
 const queryClient = new QueryClient();
 
 if (typeof window !== 'undefined') {
