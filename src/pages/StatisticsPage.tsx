@@ -1,7 +1,7 @@
 import {useStatistics} from "@/context/StatisticsContext";
-import WeeklyChart from "@/components/Statistics/WeeklyChart.tsx";
-import TaskPerPomodoroChart from "@/components/Statistics/TaskPerPomodoroChart.tsx";
-import TodayStatsCard from "@/components/Statistics/TodayStatsCard.tsx";
+import WeeklyChart from "@/components/Stats/WeeklyChart/WeeklyChart.tsx";
+import TaskPerPomodoroChart from "@/components/Stats/TaskPerPomodoroChart/TaskPerPomodoroChart.tsx";
+import TodayStatsCard from "@/components/Stats/TodayStatsCard/TodayStatsCard.tsx";
 
 export default function StatisticsPage() {
     const { stats } = useStatistics();

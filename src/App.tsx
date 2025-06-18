@@ -1,7 +1,7 @@
-import Timer from "@/components/Timer/Timer.tsx";
-import TaskList from "@/components/Tasks/TaskList.tsx";
-import Footer from "@/components/UI/Footer.tsx";
-import ErrorBoundary from "@/components/UI/ErrorBoundary.tsx";
+import Timer from "@/components/Timer/Timer/Timer.tsx";
+import TaskList from "@/components/Tasks/TaskList/TaskList.tsx";
+import Footer from "@/components/UI/Footer/Footer.tsx";
+import ErrorBoundary from "@/components/UI/ErrorBoundary/ErrorBoundary.tsx";
 
 function App() {
   return (

@@ -12,13 +12,13 @@ export function useTimer(config?: TimerConfig) {
     const { incrementStats } = useStatistics();
     const { showNotification } = useNotification();
 
-    // const workDuration = (settings.workDuration) * 60; // Default to 25 minutes in seconds
-    // const shortBreakDuration = (settings.shortBreakDuration) * 60; // Default to 5 minutes in seconds
-    // const longBreakDuration = (settings.longBreakDuration) * 60; // Default to 15 minutes in seconds
+    const workDuration = (settings.workDuration) * 60; // Default to 25 minutes in seconds
+    const shortBreakDuration = (settings.shortBreakDuration) * 60; // Default to 5 minutes in seconds
+    const longBreakDuration = (settings.longBreakDuration) * 60; // Default to 15 minutes in seconds
 
-    const workDuration = (0.05) * 60; // Default to 25 minutes in seconds
-    const shortBreakDuration = (0.05) * 60; // Default to 5 minutes in seconds
-    const longBreakDuration = (0.05) * 60; // Default to 15 minutes in seconds
+    // const workDuration = (0.05) * 60; // Default to 25 minutes in seconds
+    // const shortBreakDuration = (0.05) * 60; // Default to 5 minutes in seconds
+    // const longBreakDuration = (0.05) * 60; // Default to 15 minutes in seconds
 
     const [mode, setMode] = useState<TimerMode>("work");
     const [isRunning, setIsRunning] = useState<boolean>(false);

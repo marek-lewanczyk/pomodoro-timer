@@ -1,5 +1,5 @@
 import {createContext, useContext, useEffect, useState} from "react";
-import type {PomodoroStats} from "@/types/statistics";
+import type {PomodoroStats} from "@/types/stats.ts";
 
 const LOCAL_STORAGE_KEY = "pomodoroStats";
 

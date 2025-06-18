@@ -1,6 +1,6 @@
-import Navbar from "@/components/UI/Navbar";
-import Footer from "@/components/UI/Footer";
-import AnimatedOutlet from "@/components/AnimatedOutlet.tsx";
+import Navbar from "@/components/UI/Navbar/Navbar.tsx";
+import Footer from "@/components/UI/Footer/Footer.tsx";
+import AnimatedOutlet from "@/components/AnimatedOutlet/AnimatedOutlet.tsx";
 
 export default function MainLayout() {
     return (

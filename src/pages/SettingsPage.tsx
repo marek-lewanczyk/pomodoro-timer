@@ -2,9 +2,9 @@ import {useSettings} from "@/context/SettingsContext";
 import {useEffect} from "react";
 import {Field, Form, Formik} from "formik";
 import * as Yup from "yup";
-import FormikInputField from "@/components/UI/FormikInputField.tsx";
-import Button from "@/components/UI/Button.tsx";
-import RangeField from "@/components/UI/RangeField.tsx";
+import FormikInputField from "@/components/UI/FormikInputField/FormikInputField.tsx";
+import Button from "@/components/UI/Button/Button.tsx";
+import RangeField from "@/components/UI/RangeField/RangeField.tsx";
 
 const SettingsSchema = Yup.object().shape({
   workDuration: Yup.number().min(15).max(60).required(),

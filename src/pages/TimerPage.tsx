@@ -1,9 +1,9 @@
-import Timer from "@/components/Timer/Timer";
-import ErrorBoundary from "@/components/UI/ErrorBoundary";
+import Timer from "@/components/Timer/Timer/Timer.tsx";
+import ErrorBoundary from "@/components/UI/ErrorBoundary/ErrorBoundary.tsx";
 import {lazy, Suspense} from "react";
-import {LoadingScreen} from "@/components/UI/LoadingScreen";
+import {LoadingScreen} from "@/components/UI/LoadingScreen/LoadingScreen.tsx";
 
-const TaskList = lazy(() => import("@/components/Tasks/TaskList"));
+const TaskList = lazy(() => import("@/components/Tasks/TaskList/TaskList.tsx"));
 
 
 export default function TimerPage() {

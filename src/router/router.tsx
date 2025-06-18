@@ -3,7 +3,7 @@ import MainLayout from "@/layouts/MainLayout";
 import TimerPage from "@/pages/TimerPage";
 import SettingsPage from "@/pages/SettingsPage";
 import StatisticsPage from "@/pages/StatisticsPage";
-import ErrorBoundary from "@/components/UI/ErrorBoundary";
+import ErrorBoundary from "@/components/UI/ErrorBoundary/ErrorBoundary.tsx";
 
 const router = createBrowserRouter([
     {
