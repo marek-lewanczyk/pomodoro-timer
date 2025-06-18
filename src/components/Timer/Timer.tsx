@@ -10,6 +10,7 @@ export default function Timer() {
     const { mode, isRunning, timeLeft, start, pause, reset, switchMode } = useTimer({
         onWorkSessionEnd: incrementPomodoroForActiveTask
     });
+
     return (
         <div className="flex flex-col gap-10">
             <TimerModeSelector mode={mode} onSwitchMode={switchMode} />

@@ -1,15 +1,6 @@
-import type {ReactNode} from "react";
-import {Link} from "react-router";
+import {NavLink} from "react-router";
 
-interface IconButtonProps {
-  onClick?: () => void;
-  children: ReactNode;
-  to?: string;
-  type?: "button" | "submit" | "reset";
-  isActive?: boolean;
-  className?: string;
-  title?: string;
-}
+import type {IconButtonProps} from "@/types/ui.ts";
 
 export default function Button({
   onClick,
@@ -25,22 +16,30 @@ export default function Button({
 
   if (to) {
     return (
-        <Link to={to} title={title} className={`btn-link ${baseClass} ${className}`}>
-          {children}
-        </Link>
+        <NavLink
+            to={to}
+            title={title}
+            className={({ isActive }) =>
+                `btn-link ${baseClass} ${className} ${
+                    isActive ? "bg-primary text-secondary" : "bg-secondary text-primary"
+                }`
+            }
+        >
+            {children}
+        </NavLink>
     );
   }
 
   return (
-    <button
-      onClick={onClick}
-      type={type}
-      title={title}
-      className={`${baseClass} ${
-        isActive ? "bg-primary text-secondary" : "bg-secondary text-primary"
-      }`}
-    >
-      {children}
-    </button>
+      <button
+          onClick={onClick}
+          type={type}
+          title={title}
+          className={`${baseClass} ${
+              isActive ? "bg-primary text-secondary" : "bg-secondary text-primary"
+          }`}
+      >
+        {children}
+      </button>
   );
 }

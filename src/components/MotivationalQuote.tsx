@@ -16,7 +16,7 @@ export default function MotivationalQuote() {
     if (isError) return <p className="text-center italic text-sm">Keep going! 💪</p>;
 
     return (
-        <p className="text-center italic text-sm text-black dark:text-white font-vt323">
+        <p className="text-center italic text-sm text-primary font-vt323">
             {data}
         </p>
     );

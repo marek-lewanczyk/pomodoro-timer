@@ -1,13 +1,4 @@
-import type {ChangeEvent} from "react";
-
-interface Props {
-    label?: string;
-    name: string;
-    value: string;
-    onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
-    className?: string;
-    placeholder?: string;
-}
+import type {TextareaFieldProps} from "@/types/ui.ts";
 
 export default function TextareaField({
                                           label,
@@ -16,7 +7,7 @@ export default function TextareaField({
                                           onChange,
                                           className = "",
                                           placeholder,
-                                      }: Props) {
+                                      }: TextareaFieldProps) {
     return (
         <div>
             <label htmlFor={name} className="block mb-1">
@@ -29,7 +20,7 @@ export default function TextareaField({
                 onChange={onChange}
                 className={
                     className ||
-                    "p-1 w-full resize-y font-vt323 text-sm bg-white text-black border border-black shadow-[3px_3px_0px_black] dark:border-white dark:bg-black dark:text-white dark:shadow-[3px_3px_0px_white] focus:outline-none focus:ring-2 focus:ring-black"
+                    "p-1 w-full resize-y font-vt323 text-sm bg-secondary text-primary border border-secondary shadow focus:outline-none focus:ring-2 focus:ring-primary"
                 }
                 placeholder={placeholder}
             />

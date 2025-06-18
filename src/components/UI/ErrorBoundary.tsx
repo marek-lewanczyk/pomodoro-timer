@@ -1,13 +1,5 @@
 import React from "react";
-
-interface ErrorBoundaryProps {
-    children?: React.ReactNode;
-}
-
-interface ErrorBoundaryState {
-    hasError: boolean;
-    error?: Error;
-}
+import type {ErrorBoundaryProps, ErrorBoundaryState} from "@/types/ui.ts";
 
 export default class ErrorBoundary extends React.Component<
     ErrorBoundaryProps,
@@ -29,9 +21,9 @@ export default class ErrorBoundary extends React.Component<
     render() {
         if (this.state.hasError) {
             return (
-                <div className="p-8 text-center text-red-500 font-vt323 text-xl">
-                    <h1>Coś poszło nie tak 😢</h1>
-                    <p>{this.state.error?.message}</p>
+                <div className="p-8 text-center font-vt323 text-xl border border-primary shadow-[3px_3px_0_black] bg-secondary text-primary">
+                    <h3 className="mb-2">Something went wrong!</h3>
+                    <p className="text-base text-primary">{this.state.error?.message}</p>
                 </div>
             );
         }

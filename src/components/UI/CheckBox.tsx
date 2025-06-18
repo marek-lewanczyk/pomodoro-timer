@@ -1,8 +1,4 @@
-interface CheckboxProps {
-    checked: boolean;
-    onChange: () => void;
-    className?: string;
-}
+import type {CheckboxProps} from "@/types/ui.ts";
 
 export default function Checkbox({ checked, onChange, className = "" }: CheckboxProps) {
     return (
@@ -12,7 +8,7 @@ export default function Checkbox({ checked, onChange, className = "" }: Checkbox
             onChange={onChange}
             className={
                 className +
-                " appearance-none w-6 h-6 border border-black bg-white checked:bg-black checked:border-black checked:text-white cursor-pointer shadow-[3px_3px_0px_black] transition duration-100"
+                "appearance-none w-6 h-6 border border-primary bg-white checked:bg-primary checked:border-primary checked:text-secondary cursor-pointer shadow transition duration-100"
             }
         />
     );

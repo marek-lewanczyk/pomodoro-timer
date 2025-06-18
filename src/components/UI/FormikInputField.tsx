@@ -1,12 +1,5 @@
 import {ErrorMessage, Field} from "formik";
-
-interface Props {
-    label?: string;
-    name: string;
-    fieldType?: string;
-    min?: number;
-    max?: number;
-}
+import type {FormiInputFieldProps} from "@/types/ui.ts";
 
 export default function FormikInputField({
                                              label,
@@ -14,12 +7,12 @@ export default function FormikInputField({
                                              fieldType = "text",
                                              min,
                                              max,
-                                         }: Props) {
+                                         }: FormiInputFieldProps) {
     return (
         <div className="w-full">
             {label?.trim() && (
                 <label
-                    className="block mb-1 font-vt323 text-sm text-black dark:text-white"
+                    className="block mb-1 font-vt323 text-sm text-primary"
                     htmlFor={name}
                 >
                     {label}
