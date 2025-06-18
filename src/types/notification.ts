@@ -1,9 +1,9 @@
 export type NotificationProps = {
-  message: string;
-  className?: string;
+    message: string;
+    className?: string;
 };
 
 export interface NotificationContextType {
-  message: string | null;
-  showNotification: (msg: string) => void;
+    message: string | null;
+    showNotification: (msg: string) => void;
 }

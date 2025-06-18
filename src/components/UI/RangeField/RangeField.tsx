@@ -1,26 +1,26 @@
 import { Field } from 'formik';
 
 interface RangeFieldProps {
-  name: string;
-  label: string;
-  value: number;
-  min?: number;
-  max?: number;
+    name: string;
+    label: string;
+    value: number;
+    min?: number;
+    max?: number;
 }
 
 export default function RangeField({ name, label, value, min = 0, max = 100 }: RangeFieldProps) {
-  return (
-    <div className="mb-4">
-      <label htmlFor={name} className="block mb-1 text-primary dark:text-secondary">
-        {label} ({value}%)
-      </label>
-      <Field
-        id={name}
-        name={name}
-        type="range"
-        min={min}
-        max={max}
-        className="w-full h-2 appearance-none cursor-pointer
+    return (
+        <div className="mb-4">
+            <label htmlFor={name} className="block mb-1 text-primary dark:text-secondary">
+                {label} ({value}%)
+            </label>
+            <Field
+                id={name}
+                name={name}
+                type="range"
+                min={min}
+                max={max}
+                className="w-full h-2 appearance-none cursor-pointer
                    bg-primary dark:bg-secondary
                    [&::-webkit-slider-thumb]:appearance-none
                    [&::-webkit-slider-thumb]:w-2.5
@@ -40,7 +40,7 @@ export default function RangeField({ name, label, value, min = 0, max = 100 }: R
                    [&::-moz-range-thumb]:border-primary
                    [&::-moz-range-thumb]:dark:border-secondary
                    "
-      />
-    </div>
-  );
+            />
+        </div>
+    );
 }

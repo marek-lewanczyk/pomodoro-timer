@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import TodayStatsCard from './TodayStatsCard';
 
 const meta = {
-  component: TodayStatsCard,
+    component: TodayStatsCard
 } satisfies Meta<typeof TodayStatsCard>;
 
 export default meta;
@@ -11,8 +11,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    pomodoros: 0,
-    minutesWorked: 0
-  }
+    args: {
+        pomodoros: 0,
+        minutesWorked: 0
+    }
 };

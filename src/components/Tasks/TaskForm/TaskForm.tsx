@@ -6,26 +6,26 @@ import Button from '@/components/UI/Button/Button.tsx';
 import FormikInputField from '@/components/UI/FormikInputField/FormikInputField.tsx';
 
 export default function TaskForm() {
-  const { addTask } = useTasks();
+    const { addTask } = useTasks();
 
-  return (
-    <Formik
-      initialValues={{ title: '' }}
-      onSubmit={(values, { resetForm }) => {
-        if (values.title.trim()) {
-          addTask(values.title.trim());
-          resetForm();
-        }
-      }}
-    >
-      <Form className="w-full flex gap-4 items-center">
-        <div className="flex-grow bg-secondary dark:bg-primary">
-          <FormikInputField name="title" fieldType="text" />
-        </div>
-        <Button type="submit" title="Add">
-          <PlusIcon className="h-8 w-8" />
-        </Button>
-      </Form>
-    </Formik>
-  );
+    return (
+        <Formik
+            initialValues={{ title: '' }}
+            onSubmit={(values, { resetForm }) => {
+                if (values.title.trim()) {
+                    addTask(values.title.trim());
+                    resetForm();
+                }
+            }}
+        >
+            <Form className="w-full flex gap-4 items-center">
+                <div className="flex-grow bg-secondary dark:bg-primary">
+                    <FormikInputField name="title" fieldType="text" />
+                </div>
+                <Button type="submit" title="Add">
+                    <PlusIcon className="h-8 w-8" />
+                </Button>
+            </Form>
+        </Formik>
+    );
 }

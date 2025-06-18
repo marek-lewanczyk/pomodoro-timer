@@ -1,21 +1,21 @@
 import { useQuery } from '@tanstack/react-query';
 
 export default function MotivationalQuote() {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ['motivationalQuote'],
-    queryFn: async () => {
-      const res = await fetch('https://api.quotable.io/random?tags=motivational|inspirational');
-      if (!res.ok) throw new Error('Failed to fetch quote');
-      const data = await res.json();
-      return `${data.content} — ${data.author}`;
-    },
-    staleTime: 1000 * 60 * 5,
-  });
+    const { data, isLoading, isError } = useQuery({
+        queryKey: ['motivationalQuote'],
+        queryFn: async () => {
+            const res = await fetch('https://api.quotable.io/random?tags=motivational|inspirational');
+            if (!res.ok) throw new Error('Failed to fetch quote');
+            const data = await res.json();
+            return `${data.content} — ${data.author}`;
+        },
+        staleTime: 1000 * 60 * 5
+    });
 
-  if (isLoading) return <p className="text-center italic text-sm">Loading...</p>;
-  if (isError) return <p className="text-center italic text-sm">Keep going! 💪</p>;
+    if (isLoading) return <p className="text-center italic text-sm">Loading...</p>;
+    if (isError) return <p className="text-center italic text-sm">Keep going! 💪</p>;
 
-  return <p className="text-center italic text-sm font-vt323">{data}</p>;
+    return <p className="text-center italic text-sm font-vt323">{data}</p>;
 }
 
 // import {useEffect, useState} from "react";

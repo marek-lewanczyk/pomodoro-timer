@@ -3,22 +3,22 @@ import { useState } from 'react';
 import TextareaField from './TextareaField';
 
 const meta = {
-  component: TextareaField,
+    component: TextareaField
 } satisfies Meta<typeof TextareaField>;
 
 export default meta;
 type Story = StoryObj<typeof TextareaField>;
 
 export const Default: Story = {
-  render: (args) => {
-    const [value, setValue] = useState(args.value || '');
+    render: args => {
+        const [value, setValue] = useState(args.value || '');
 
-    return <TextareaField {...args} value={value} onChange={(e) => setValue(e.target.value)} />;
-  },
-  args: {
-    label: 'Opis',
-    name: 'description',
-    value: '',
-    placeholder: 'Wpisz opis...',
-  },
+        return <TextareaField {...args} value={value} onChange={e => setValue(e.target.value)} />;
+    },
+    args: {
+        label: 'Opis',
+        name: 'description',
+        value: '',
+        placeholder: 'Wpisz opis...'
+    }
 };

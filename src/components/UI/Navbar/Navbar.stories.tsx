@@ -3,15 +3,15 @@ import Navbar from './Navbar';
 import { MemoryRouter } from 'react-router';
 
 const meta: Meta<typeof Navbar> = {
-  title: 'Components/UI/Navbar',
-  component: Navbar,
-  decorators: [
-    (Story) => (
-      <MemoryRouter initialEntries={['/']}>
-        <Story />
-      </MemoryRouter>
-    ),
-  ],
+    title: 'Components/UI/Navbar',
+    component: Navbar,
+    decorators: [
+        Story => (
+            <MemoryRouter initialEntries={['/']}>
+                <Story />
+            </MemoryRouter>
+        )
+    ]
 };
 
 export default meta;
@@ -19,5 +19,5 @@ export default meta;
 type Story = StoryObj<typeof Navbar>;
 
 export const Default: Story = {
-  args: {},
+    args: {}
 };
