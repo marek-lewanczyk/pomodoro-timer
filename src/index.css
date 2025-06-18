@@ -1,36 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-    --color-gray: #999;
-    --color-primary: #352f36;
-    --color-secondary: #faf9f6;
+  --color-gray: #999;
+  --color-primary: #352f36;
+  --color-secondary: #faf9f6;
 }
 
 @theme {
-    --font-pixel: "Press Start 2P", system-ui;
-    --font-vt323: "VT323", monospace;
-    --color-*: initial;
-    --color-gray: var(--color-gray);
-    --color-primary: var(--color-primary);
-    --color-secondary: var(--color-secondary);
-    --shadow: 3px 3px 0 #352f36;
-    --shadow-dark: 3px 3px 0 #faf9f6;
+  --font-pixel: 'Press Start 2P', system-ui;
+  --font-vt323: 'VT323', monospace;
+  --color-*: initial;
+  --color-gray: var(--color-gray);
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --shadow: 3px 3px 0 #352f36;
+  --shadow-dark: 3px 3px 0 #faf9f6;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer components {
-    .btn-link {
-        @apply inline-flex items-center justify-center h-12 w-auto p-2 font-pixel text-sm border border-primary shadow transition active:scale-95;
-        background-color: var(--color-secondary);
-        color: var(--color-primary);
-    }
+  .btn-link {
+    @apply inline-flex items-center justify-center h-12 w-auto p-2 font-pixel text-sm border border-primary shadow transition active:scale-95;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+  }
 
-    .btn-link:hover {
-        background-color: var(--color-primary);
-        color: var(--color-secondary);
-    }
+  .btn-link:hover {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+  }
 }

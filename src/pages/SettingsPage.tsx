@@ -1,10 +1,10 @@
-import {useSettings} from "@/context/SettingsContext";
-import {useEffect} from "react";
-import {Field, Form, Formik} from "formik";
-import * as Yup from "yup";
-import FormikInputField from "@/components/UI/FormikInputField/FormikInputField.tsx";
-import Button from "@/components/UI/Button/Button.tsx";
-import RangeField from "@/components/UI/RangeField/RangeField.tsx";
+import { useSettings } from '@/context/SettingsContext';
+import { useEffect } from 'react';
+import { Field, Form, Formik } from 'formik';
+import * as Yup from 'yup';
+import FormikInputField from '@/components/UI/FormikInputField/FormikInputField.tsx';
+import Button from '@/components/UI/Button/Button.tsx';
+import RangeField from '@/components/UI/RangeField/RangeField.tsx';
 
 const SettingsSchema = Yup.object().shape({
   workDuration: Yup.number().min(15).max(60).required(),
@@ -12,7 +12,7 @@ const SettingsSchema = Yup.object().shape({
   longBreakDuration: Yup.number().min(15).max(30).required(),
   soundEnabled: Yup.boolean(),
   soundVolume: Yup.number().min(0).max(100).required(),
-  theme: Yup.string().oneOf(["system", "light", "dark"]).required(),
+  theme: Yup.string().oneOf(['system', 'light', 'dark']).required(),
 });
 
 export default function SettingsPage() {
@@ -20,13 +20,11 @@ export default function SettingsPage() {
 
   useEffect(() => {
     const root = document.documentElement;
-    root.classList.remove("light", "dark");
+    root.classList.remove('light', 'dark');
 
-    if (settings.theme === "system") {
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      root.classList.add(prefersDark ? "dark" : "light");
+    if (settings.theme === 'system') {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      root.classList.add(prefersDark ? 'dark' : 'light');
     } else {
       root.classList.add(settings.theme);
     }
@@ -76,11 +74,7 @@ export default function SettingsPage() {
               <label htmlFor="soundEnabled">Turning sound on/off</label>
             </div>
 
-            <RangeField
-                name="soundVolume"
-                label="Volume"
-                value={values.soundVolume}
-            />
+            <RangeField name="soundVolume" label="Volume" value={values.soundVolume} />
 
             <div>
               <label className="block mb-1">Theme</label>

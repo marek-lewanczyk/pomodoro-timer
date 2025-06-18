@@ -1,5 +1,5 @@
 export interface EmojiProps {
-    symbol: string;
-    label?: string;
-    className?: string;
+  symbol: string;
+  label?: string;
+  className?: string;
 }
