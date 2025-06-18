@@ -4,7 +4,6 @@ import {Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import FormikInputField from "@/components/UI/FormikInputField.tsx";
 import Button from "@/components/UI/Button.tsx";
-import {ArrowTurnLeftUpIcon} from "@heroicons/react/16/solid";
 import RangeField from "@/components/UI/RangeField/RangeField.tsx";
 
 const SettingsSchema = Yup.object().shape({
@@ -35,12 +34,7 @@ export default function SettingsPage() {
 
   return (
     <div className="flex flex-col p-4 font-vt323 max-w-xl mx-auto gap-4">
-      <div className="flex items-center">
-        <Button to="/">
-          <ArrowTurnLeftUpIcon className="w-8 h-8" />
-        </Button>
-        <h1 className="text-3xl m-4">Ustawienia</h1>
-      </div>
+      <h1 className="flex justify-center text-3xl">Settings</h1>
 
       <Formik
         initialValues={settings}
@@ -51,7 +45,7 @@ export default function SettingsPage() {
           <Form className="space-y-4">
             <FormikInputField
               fieldType="number"
-              label="Czas pracy"
+              label="Work duration (min)"
               name="workDuration"
               min={15}
               max={60}
@@ -59,7 +53,7 @@ export default function SettingsPage() {
 
             <FormikInputField
               fieldType="number"
-              label="Krótka przerwa"
+              label="Short break duration (min)"
               name="shortBreakDuration"
               min={3}
               max={15}
@@ -67,7 +61,7 @@ export default function SettingsPage() {
 
             <FormikInputField
               fieldType="number"
-              label="Długa przerwa"
+              label="Long break duration (min)"
               name="longBreakDuration"
               min={10}
               max={30}
@@ -77,35 +71,34 @@ export default function SettingsPage() {
               <Field
                 type="checkbox"
                 name="soundEnabled"
-                className="w-5 h-5 border border-black shadow-[2px_2px_0px_black]"
+                className="appearance-none w-6 h-6 border border-primary bg-white checked:bg-primary checked:border-primary checked:text-secondary cursor-pointer shadow transition duration-100"
               />
-              <label htmlFor="soundEnabled">
-                Włącz powiadomienia dźwiękowe
-              </label>
+              <label htmlFor="soundEnabled">Turning sound on/off</label>
             </div>
 
             <RangeField
                 name="soundVolume"
-                label="Głośność"
+                label="Volume"
                 value={values.soundVolume}
             />
 
             <div>
-              <label className="block mb-1">Motyw</label>
+              <label className="block mb-1">Theme</label>
               <Field
                 as="select"
                 name="theme"
                 className="w-full border border-black p-2 shadow-[3px_3px_0px_black]"
               >
-                <option value="system">Systemowy</option>
-                <option value="light">Jasny</option>
-                <option value="dark">Ciemny</option>
+                <option value="system">Auto</option>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
               </Field>
             </div>
-
-            <Button type="submit">
-                <span className="px-2">Zapisz</span>
-            </Button>
+            <div className="flex justify-center">
+              <Button type="submit">
+                <span className="px-2">Save</span>
+              </Button>
+            </div>
           </Form>
         )}
       </Formik>
