@@ -1,7 +1,8 @@
-import {useTasks} from '@/context/TaskContext'
 import {PlusIcon} from "@heroicons/react/16/solid";
-import Button from "@/components/UI/Button.tsx";
 import {Form, Formik} from 'formik'
+
+import {useTasks} from '@/context/TaskContext'
+import Button from "@/components/UI/Button.tsx";
 import FormikInputField from '@/components/UI/FormikInputField'
 
 export default function TaskForm() {

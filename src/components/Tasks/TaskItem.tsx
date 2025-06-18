@@ -1,19 +1,15 @@
 import {memo, useState} from "react";
-import TextareaField from "@/components/UI/TextareaField";
-import type {Task} from "@/types/task";
-import {useTasks} from "@/context/TaskContext";
 import {ChevronDownIcon, ChevronUpIcon} from "@heroicons/react/16/solid";
+
+import {useTasks} from "@/context/TaskContext";
+import TextareaField from "@/components/UI/TextareaField";
 import Button from "@/components/UI/Button.tsx";
 import Checkbox from "@/components/UI/CheckBox.tsx";
 import TaskPomodoroCount from "@/components/Tasks/TaskPomodoroCount.tsx";
 import TaskActions from "@/components/Tasks/TaskActions.tsx";
+import type {TaskItemProps} from "@/types/task.ts";
 
-interface Props {
-  task: Task;
-  isActive: boolean;
-}
-
-function TaskItem({ task, isActive }: Props) {
+function TaskItem({ task, isActive }: TaskItemProps) {
   const { updateTask, deleteTask, toggleComplete, setActiveTask } = useTasks();
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(task.title);
@@ -27,7 +23,7 @@ function TaskItem({ task, isActive }: Props) {
   };
 
   return (
-    <li className="w-full flex flex-col bg-white">
+    <li className="w-full flex flex-col bg-secondary">
       <div className="font-vt323 flex justify-between items-center gap-5">
         <div className="w-full flex items-center gap-3">
           <Checkbox
@@ -39,7 +35,7 @@ function TaskItem({ task, isActive }: Props) {
               name="editedTitle"
               value={editedTitle}
               onChange={(e) => setEditedTitle(e.target.value)}
-              className="p-1 w-full resize-y font-vt323 text-sm bg-white text-black border border-black shadow-[3px_3px_0px_black] focus:outline-none focus:ring-2 focus:ring-black dark:border-white dark:bg-black dark:text-white dark:shadow-[3px_3px_0px_white]"
+              className="p-1 w-auto font-vt323 text-sm bg-secondary text-primary border border-primary shadow focus:outline-none"
             />
           ) : (
             <span
@@ -85,7 +81,7 @@ function TaskItem({ task, isActive }: Props) {
   );
 }
 
-function areEqual(prev: Props, next: Props) {
+function areEqual(prev: TaskItemProps, next: TaskItemProps) {
   return (
     prev.task.id === next.task.id &&
     prev.task.title === next.task.title &&

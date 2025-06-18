@@ -6,6 +6,7 @@ interface IconButtonProps {
   children: ReactNode;
   to?: string;
   type?: "button" | "submit" | "reset";
+  isActive?: boolean;
   className?: string;
   title?: string;
 }
@@ -14,17 +15,19 @@ export default function Button({
   onClick,
   children,
   title,
-    to,
-    type,
+  to,
+  type,
   className,
+  isActive,
 }: IconButtonProps) {
   const baseClass =
-      "inline-flex items-center justify-center h-12 w-auto p-2 font-pixel text-sm border border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:bg-black hover:text-white transition active:scale-95";
+    "inline-flex items-center justify-center h-12 w-auto p-2 font-pixel text-sm border border-primary shadow hover:bg-primary hover:text-secondary transition active:scale-95";
+
   if (to) {
     return (
-      <Link to={to} title={title} className={`${baseClass} ${className}`}>
-        {children}
-      </Link>
+        <Link to={to} title={title} className={`btn-link ${baseClass} ${className}`}>
+          {children}
+        </Link>
     );
   }
 
@@ -33,7 +36,9 @@ export default function Button({
       onClick={onClick}
       type={type}
       title={title}
-      className={`${baseClass} ${className}`}
+      className={`${baseClass} ${
+        isActive ? "bg-primary text-secondary" : "bg-secondary text-primary"
+      }`}
     >
       {children}
     </button>

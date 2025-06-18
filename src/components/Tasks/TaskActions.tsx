@@ -1,15 +1,9 @@
 import {memo} from "react";
-import Button from "@/components/UI/Button.tsx";
 import {ClipboardDocumentCheckIcon, PencilIcon, StarIcon, TrashIcon} from "@heroicons/react/16/solid";
 
-interface TaskActionsProps {
-    isCompleted: boolean;
-    isActive: boolean;
-    isEditing: boolean;
-    onSetActive: () => void;
-    onEdit: () => void;
-    onDelete: () => void;
-}
+import Button from "@/components/UI/Button.tsx";
+import type {TaskActionsProps} from "@/types/task.ts";
+
 
 function TaskActions({
                                         isCompleted,
@@ -24,11 +18,7 @@ function TaskActions({
             {!isCompleted && (
                 <Button
                     onClick={onSetActive}
-                    className={
-                        isActive
-                            ? "bg-black text-white"
-                            : "bg-white text-black hover:bg-black hover:text-white"
-                    }
+                    isActive={isActive}
                 >
                     <StarIcon className="h-8 w-8" />
                 </Button>
