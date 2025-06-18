@@ -23,19 +23,19 @@ function TaskItem({ task, isActive }: TaskItemProps) {
     };
 
     return (
-        <li className="w-full flex flex-col bg-secondary dark:bg-primary">
-            <div className="font-vt323 flex justify-between items-center gap-5">
-                <div className="w-full flex items-center gap-3">
+        <li className="bg-secondary dark:bg-primary flex w-full flex-col">
+            <div className="font-vt323 flex items-center justify-between gap-5">
+                <div className="flex w-full items-center gap-3">
                     <Checkbox checked={task.isCompleted} onChange={() => toggleComplete(task.id)} />
                     {isEditing ? (
                         <TextareaField
                             name="editedTitle"
                             value={editedTitle}
                             onChange={e => setEditedTitle(e.target.value)}
-                            className="p-1 w-auto font-vt323 text-sm bg-secondary border border-primary shadow focus:outline-none dark:bg-primary dark:border-secondary dark:shadow-secondary"
+                            className="font-vt323 bg-secondary border-primary dark:bg-primary dark:border-secondary dark:shadow-secondary w-auto border p-1 text-sm shadow focus:outline-none"
                         />
                     ) : (
-                        <span className={`flex-1 text-sm text-justify ${task.isCompleted ? 'line-through' : ''}`}>{task.title}</span>
+                        <span className={`flex-1 text-justify text-sm ${task.isCompleted ? 'line-through' : ''}`}>{task.title}</span>
                     )}
                 </div>
 
@@ -51,7 +51,7 @@ function TaskItem({ task, isActive }: TaskItemProps) {
 
             {/* Mobile-only options */}
             {isExpanded && (
-                <div className="mt-2 gap-4 flex flex-col items-end lg:hidden">
+                <div className="mt-2 flex flex-col items-end gap-4 lg:hidden">
                     <TaskActions
                         isCompleted={task.isCompleted}
                         isActive={isActive}
@@ -64,7 +64,7 @@ function TaskItem({ task, isActive }: TaskItemProps) {
             )}
 
             {/* Desktop-only options (always visible) */}
-            <div className="mt-2 gap-4 hidden lg:flex lg:flex-row lg:items-center lg:justify-end">
+            <div className="mt-2 hidden gap-4 lg:flex lg:flex-row lg:items-center lg:justify-end">
                 <TaskActions
                     isCompleted={task.isCompleted}
                     isActive={isActive}

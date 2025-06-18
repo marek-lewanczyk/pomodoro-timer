@@ -31,7 +31,7 @@ export default function SettingsPage() {
     }, [settings.theme]);
 
     return (
-        <div className="flex flex-col p-4 font-vt323 max-w-xl mx-auto gap-4">
+        <div className="font-vt323 mx-auto flex max-w-xl flex-col gap-4 p-4">
             <h1 className="flex justify-center text-3xl">Settings</h1>
 
             <Formik initialValues={settings} validationSchema={SettingsSchema} onSubmit={values => updateSettings(values)}>
@@ -47,7 +47,7 @@ export default function SettingsPage() {
                             <Field
                                 type="checkbox"
                                 name="soundEnabled"
-                                className="appearance-none w-6 h-6 border border-primary bg-secondary checked:bg-primary checked:border-primary checked:text-secondary cursor-pointer shadow transition duration-100 dark:border-secondary dark:bg-primary dark:checked:bg-secondary dark:checked:border-secondary dark:checked:text-secondary dark:shadow-secondary"
+                                className="border-primary bg-secondary checked:bg-primary checked:border-primary checked:text-secondary dark:border-secondary dark:bg-primary dark:checked:bg-secondary dark:checked:border-secondary dark:checked:text-secondary dark:shadow-secondary h-6 w-6 cursor-pointer appearance-none border shadow transition duration-100"
                             />
                             <label htmlFor="soundEnabled">Turning sound on/off</label>
                         </div>
@@ -55,7 +55,7 @@ export default function SettingsPage() {
                         <RangeField name="soundVolume" label="Volume" value={values.soundVolume} />
 
                         <div>
-                            <label className="block mb-1">Theme</label>
+                            <label className="mb-1 block">Theme</label>
                             <Field as="select" name="theme" className="w-full border border-black p-2 shadow-[3px_3px_0px_black]">
                                 <option value="system">Auto</option>
                                 <option value="light">Light</option>

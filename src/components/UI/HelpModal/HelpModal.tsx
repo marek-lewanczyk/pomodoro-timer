@@ -13,20 +13,20 @@ export default function HelpModal({ onClose }: HelpModalProps) {
 
     return createPortal(
         <div
-            className="fixed inset-0 flex justify-center items-center z-50 text-primary dark:text-secondary"
+            className="text-primary dark:text-secondary fixed inset-0 z-50 flex items-center justify-center"
             onClick={handleBackdropClick}
             data-testid="backdrop"
         >
             <div
-                className="bg-secondary border border-primary shadow p-6 max-w-md w-full font-vt323 relative dark:bg-primary dark:border-secondary dark:shadow-dark"
+                className="bg-secondary border-primary font-vt323 dark:bg-primary dark:border-secondary dark:shadow-dark relative w-full max-w-md border p-6 shadow"
                 onClick={e => e.stopPropagation()}
                 data-testid="modal-content"
             >
                 <button onClick={onClose} className="absolute top-2 right-4 text-xl" aria-label="Close">
                     ×
                 </button>
-                <h3 className="text-xl mb-2 underline">How does it work?</h3>
-                <ul className="list-disc pl-5 mb-4 space-y-1">
+                <h3 className="mb-2 text-xl underline">How does it work?</h3>
+                <ul className="mb-4 list-disc space-y-1 pl-5">
                     <li>
                         <strong>25 minutes</strong> of focused work → <strong>5-minute</strong> short break
                     </li>
@@ -35,8 +35,8 @@ export default function HelpModal({ onClose }: HelpModalProps) {
                     </li>
                 </ul>
 
-                <h3 className="text-xl mb-2 underline">Key Features:</h3>
-                <ul className="list-disc pl-5 space-y-1">
+                <h3 className="mb-2 text-xl underline">Key Features:</h3>
+                <ul className="list-disc space-y-1 pl-5">
                     <li>Automatically switches between work and break sessions</li>
                     <li>
                         Track Pomodoros <strong>per task</strong>

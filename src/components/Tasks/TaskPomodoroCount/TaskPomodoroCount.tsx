@@ -5,7 +5,7 @@ import type { TaskPomodoroCountProps } from '@/types/task.ts';
 
 function TaskPomodoroCount({ count, isActive }: TaskPomodoroCountProps) {
     return (
-        <span className="flex flex-row gap-2 items-center text-xs">
+        <span className="flex flex-row items-center gap-2 text-xs">
             {count}
             <AcademicCapIcon className="inline h-4 w-4" />
             {isActive && <StarIcon className="h-4 w-4 lg:hidden" />}

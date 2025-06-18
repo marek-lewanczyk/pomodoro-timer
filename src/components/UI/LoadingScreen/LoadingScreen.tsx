@@ -3,7 +3,7 @@ import { squareVariants } from '@/animations/loadingVariants.ts';
 
 export function LoadingScreen() {
     return (
-        <div className="flex items-center justify-center h-full">
+        <div className="flex h-full items-center justify-center">
             <div className="flex gap-4">
                 {[0, 1, 2].map(i => (
                     <motion.div
@@ -13,7 +13,7 @@ export function LoadingScreen() {
                         animate="visible"
                         variants={squareVariants}
                         data-testid="loading-square"
-                        className="w-6 h-6 bg-primary dark:bg-secondary"
+                        className="bg-primary dark:bg-secondary h-6 w-6"
                         style={{ imageRendering: 'pixelated' }}
                     />
                 ))}

@@ -10,7 +10,7 @@ export default function StatisticsPage() {
     const todayStats = stats[today] || { pomodoros: 0, minutesWorked: 0 };
 
     return (
-        <div className="flex flex-col p-4 font-vt323 max-w-xl mx-auto gap-4">
+        <div className="font-vt323 mx-auto flex max-w-xl flex-col gap-4 p-4">
             <h1 className="flex justify-center text-3xl">Stats</h1>
             <TodayStatsCard minutesWorked={todayStats.minutesWorked} pomodoros={todayStats.pomodoros} />
             <WeeklyChart />

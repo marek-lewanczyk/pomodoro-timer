@@ -24,7 +24,7 @@
 
 @layer components {
     .btn-link {
-        @apply inline-flex items-center justify-center h-12 w-auto p-2 font-pixel text-sm border border-primary shadow transition active:scale-95;
+        @apply font-pixel border-primary inline-flex h-12 w-auto items-center justify-center border p-2 text-sm shadow transition active:scale-95;
         background-color: var(--color-secondary);
         color: var(--color-primary);
     }

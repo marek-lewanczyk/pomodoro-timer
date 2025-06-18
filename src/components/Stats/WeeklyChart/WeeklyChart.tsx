@@ -16,8 +16,8 @@ export default function WeeklyChart() {
     }));
 
     return (
-        <div className="p-4 border border-primary shadow font-vt323 text-sm dark:border-secondary dark:shadow-dark">
-            <h3 className="text-xl mb-4 text-center">Last 7 days</h3>
+        <div className="border-primary font-vt323 dark:border-secondary dark:shadow-dark border p-4 text-sm shadow">
+            <h3 className="mb-4 text-center text-xl">Last 7 days</h3>
             <ResponsiveContainer width="100%" height={400}>
                 <BarChart data={data}>
                     <CartesianGrid strokeDasharray="3 3" stroke={chartTheme.color_gray} />

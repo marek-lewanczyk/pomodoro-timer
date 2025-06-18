@@ -12,10 +12,10 @@ export default function MotivationalQuote() {
         staleTime: 1000 * 60 * 5
     });
 
-    if (isLoading) return <p className="text-center italic text-sm">Loading...</p>;
-    if (isError) return <p className="text-center italic text-sm">Keep going! 💪</p>;
+    if (isLoading) return <p className="text-center text-sm italic">Loading...</p>;
+    if (isError) return <p className="text-center text-sm italic">Keep going! 💪</p>;
 
-    return <p className="text-center italic text-sm font-vt323">{data}</p>;
+    return <p className="font-vt323 text-center text-sm italic">{data}</p>;
 }
 
 // import {useEffect, useState} from "react";

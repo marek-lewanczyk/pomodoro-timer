@@ -31,7 +31,7 @@ const meta: Meta<typeof TaskItem> = {
     decorators: [
         Story => (
             <MockTasksProvider>
-                <ul className="max-w-md mx-auto p-4">
+                <ul className="mx-auto max-w-md p-4">
                     <Story />
                 </ul>
             </MockTasksProvider>

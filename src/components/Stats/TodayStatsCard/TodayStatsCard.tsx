@@ -2,7 +2,7 @@ import type { TodayStatsCardProps } from '@/types/stats.ts';
 
 export default function TodayStatsCard({ pomodoros, minutesWorked }: TodayStatsCardProps) {
     return (
-        <div className="p-4 border border-primary shadow font-vt323 text-sm dark:border-secondary dark:shadow-dark ">
+        <div className="border-primary font-vt323 dark:border-secondary dark:shadow-dark border p-4 text-sm shadow">
             <p>
                 Pomodoros completed today: <strong>{pomodoros}</strong>
             </p>

@@ -3,7 +3,7 @@ import MotivationalQuote from '@/components/MotivationalQuote/MotivationalQuote.
 
 export default function Footer() {
     return (
-        <footer className="flex flex-col p-8 border-t border-primary text-center font-vt323 text-sm gap-2 dark:border-secondary">
+        <footer className="border-primary font-vt323 dark:border-secondary flex flex-col gap-2 border-t p-8 text-center text-sm">
             <Suspense fallback={<p className="px-4 italic">Loading quote...</p>}>
                 <MotivationalQuote />
             </Suspense>

@@ -3,7 +3,7 @@ import type { TextareaFieldProps } from '@/types/ui.ts';
 export default function TextareaField({ label, name, value, onChange, className = '', placeholder }: TextareaFieldProps) {
     return (
         <div>
-            <label htmlFor={name} className="block mb-1">
+            <label htmlFor={name} className="mb-1 block">
                 {label}
             </label>
             <textarea
@@ -13,7 +13,7 @@ export default function TextareaField({ label, name, value, onChange, className 
                 onChange={onChange}
                 className={
                     className ||
-                    'p-1 w-full resize-y font-vt323 text-sm bg-secondary border border-secondary shadow focus:outline-none focus:ring-2 focus:ring-primary'
+                    'font-vt323 bg-secondary border-secondary focus:ring-primary w-full resize-y border p-1 text-sm shadow focus:ring-2 focus:outline-none'
                 }
                 placeholder={placeholder}
             />

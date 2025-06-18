@@ -18,7 +18,7 @@ export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, E
     render() {
         if (this.state.hasError) {
             return (
-                <div className="p-8 text-center font-vt323 text-xl border border-primary shadow bg-secondary dark:border-secondary dark:bg-primary dark:shadow-dark">
+                <div className="font-vt323 border-primary bg-secondary dark:border-secondary dark:bg-primary dark:shadow-dark border p-8 text-center text-xl shadow">
                     <h3 className="mb-2">Something went wrong!</h3>
                     <p className="text-base">{this.state.error?.message}</p>
                 </div>

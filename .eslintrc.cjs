@@ -8,7 +8,6 @@ module.exports = {
         'plugin:react-hooks/recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:jsx-a11y/recommended',
-        'plugin:tailwindcss/recommended',
         'prettier'
     ],
     parserOptions: {
@@ -28,5 +27,8 @@ module.exports = {
         es2021: true,
         node: true
     },
-    rules: {}
+    rules: {
+        'react/react-in-jsx-scope': 'off',
+        'tailwindcss/no-custom-classname': 'off'
+    }
 };
