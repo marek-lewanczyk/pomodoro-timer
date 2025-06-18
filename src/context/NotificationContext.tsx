@@ -1,10 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 import { createPortal } from 'react-dom';
-
-interface NotificationContextType {
-  message: string | null;
-  showNotification: (msg: string) => void;
-}
+import Notification from '@/components/UI/Notification/Notification.tsx';
+import type { NotificationContextType } from '@/types/notification.ts';
 
 const NotificationContext = createContext<NotificationContextType>({
   message: null,
@@ -23,12 +20,7 @@ export const NotificationProvider = ({ children }: { children: React.ReactNode }
     <NotificationContext.Provider value={{ message, showNotification }}>
       {children}
       {message &&
-        createPortal(
-          <div className="fixed top-6 right-6 px-6 py-3 border border-primary bg-secondary text-primary shadow font-vt323 text-lg z-50">
-            {message}
-          </div>,
-          document.getElementById('modal-root')!,
-        )}
+        createPortal(<Notification message={message} />, document.getElementById('modal-root')!)}
     </NotificationContext.Provider>
   );
 };
