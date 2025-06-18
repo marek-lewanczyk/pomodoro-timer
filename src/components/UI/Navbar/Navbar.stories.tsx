@@ -1,32 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Navbar from './Navbar';
-import { createMemoryRouter, RouterProvider } from 'react-router';
-
-// 🔧 Utwórz tymczasowy router do Storybooka
-const router = createMemoryRouter(
-  [
-    { path: '/', element: <Navbar /> },
-    { path: '/statistics', element: <Navbar /> },
-    { path: '/settings', element: <Navbar /> },
-  ],
-  { initialEntries: ['/'] },
-);
+import { MemoryRouter } from 'react-router';
 
 const meta: Meta<typeof Navbar> = {
-  title: 'Components/UI/Navbar', // ← To pole jest wymagane
+  title: 'Components/UI/Navbar',
   component: Navbar,
   decorators: [
     (Story) => (
-      <RouterProvider router={router}>
+      <MemoryRouter initialEntries={['/']}>
         <Story />
-      </RouterProvider>
+      </MemoryRouter>
     ),
   ],
 };
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Navbar>;
 
 export const Default: Story = {
   args: {},
